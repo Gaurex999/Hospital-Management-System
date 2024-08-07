@@ -38,7 +38,7 @@ namespace HospitalManagementSystem.Controllers
 
 
         [HttpPost("validate")]
-        public object validate([FromBody] UidAndPwd obj)
+        public object validate( UidAndPwd obj)
         {
             using (var db = new HospitalSystemContext()) 
             {
@@ -49,5 +49,31 @@ namespace HospitalManagementSystem.Controllers
                 return new Error("Enter Valid Password");
             }
         }
+
+        [HttpPost("Insert")]
+        public IActionResult SavePatient(Patient patient)
+        {
+            if (patient == null)
+            {
+                return BadRequest("Patient data is required.");
+            }
+
+            // Assuming the patient.User.Password is part of the Patient model
+            if (patient.User != null)
+            {
+                patient.User.Password = BCrypt.Net.BCrypt.HashPassword(patient.User.Password);
+            }
+
+            using (var db = new HospitalSystemContext())
+            {
+                db.Patients.Add(patient);
+                db.SaveChanges();
+            }
+
+            return Ok(patient);
+        }
+
+
+
     }
 }
