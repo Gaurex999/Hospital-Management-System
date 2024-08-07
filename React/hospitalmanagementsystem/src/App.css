@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -27,6 +28,34 @@
 .App-link {
   color: #61dafb;
 }
+
+/* Ensure the navbar spans the full width of the viewport */
+.navbar {
+  width: 100%;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Optional: Adjust padding and margin for the container if needed */
+.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Ensure the content inside the navbar adjusts to fit properly */
+.navbar-nav {
+  flex-direction: row;
+}
+
+/* Optional: Add space between nav items */
+.nav-item {
+  margin-left: 10px;
+}
+
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
