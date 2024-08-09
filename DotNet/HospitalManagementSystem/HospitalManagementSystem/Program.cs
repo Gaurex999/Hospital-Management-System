@@ -21,7 +21,21 @@ namespace HospitalManagementSystem
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 x.JsonSerializerOptions.WriteIndented = true;
             });
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000") // Replace with actual origins
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             var app = builder.Build();
+
+            
+
             app.UseCors();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

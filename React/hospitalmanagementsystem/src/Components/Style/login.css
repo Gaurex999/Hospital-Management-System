@@ -1,0 +1,60 @@
+
+/* Ensure the body and html take full height and have no margin */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  /* Fix the navbar to the top of the screen */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is above other content */
+  }
+  
+  /* Add some padding to the body to account for the fixed navbar */
+  body {
+    padding-top: 56px; /* Adjust this value if the navbar height changes */
+  }
+  
+  /* Navbar styling (optional) */
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-left: 1rem; /* Space between nav items */
+  }
+  
+  /* Navbar links styling */
+  .nav-link {
+    color: #000; /* Change color if needed */
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+  }
+  
+  /* Navbar toggler button (for mobile view) */
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,..."); /* Include icon image if needed */
+  }
+  
+  /* Ensure navbar responsiveness */
+  @media (max-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+      text-align: center;
+    }
+  
+    .navbar-expand-lg .navbar-nav .nav-item {
+      margin-left: 0;
+    }
+  }
+  
