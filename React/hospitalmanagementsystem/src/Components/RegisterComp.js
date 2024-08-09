@@ -18,7 +18,9 @@ export default function SavePatientForm() {
         }
     });
 
+    const [errors, setErrors] = useState({});
     const [msg, setMsg] = useState('');
+    const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
 
     // Handle input change
     const handleChange = (e) => {
@@ -39,11 +41,57 @@ export default function SavePatientForm() {
                 [name]: value
             };
         });
+        
+        // Check username availability if it's the username field
+        if (name === 'user.userName') {
+            checkUsernameAvailability(value);
+        }
+    };
+
+    // Check if username is available
+    const checkUsernameAvailability = (uname) => {
+        fetch(`http://localhost:5042/api/PatientLogin/CheckUsername?username=${encodeURIComponent(uname )}`)
+            .then(response => response.json())
+            .then(data => {
+                setIsUsernameAvailable(data.isAvailable);
+            })
+            .catch(error => {
+                console.error('Error checking username availability:', error);
+                setIsUsernameAvailable(false);
+            });
+    };
+
+    // Validate form data using regex
+    const validateForm = () => {
+        const newErrors = {};
+
+        // Regular expressions
+        const aadharRegex = /^\d{12}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const contactRegex = /^\d{10}$/;
+        const passwordRegex = /^.{8,12}$/; // Password must be between 8 and 12 characters long
+
+        // Validation logic
+        if (!formData.patientName.trim()) newErrors.patientName = 'Patient Name is required';
+        if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
+        if (!formData.bloodGroup.trim()) newErrors.bloodGroup = 'Blood Group is required';
+        if (!formData.patientAddress.trim()) newErrors.patientAddress = 'Patient Address is required';
+        if (!formData.patientAadharNo.trim() || !aadharRegex.test(formData.patientAadharNo)) newErrors.patientAadharNo = 'Aadhar Number must be a 12-digit number';
+        if (!formData.patientEmailId.trim() || !emailRegex.test(formData.patientEmailId)) newErrors.patientEmailId = 'Valid Email ID is required';
+        if (!formData.patientContactNo.trim() || !contactRegex.test(formData.patientContactNo)) newErrors.patientContactNo = 'Contact Number must be a 10-digit number';
+        if (!formData.user.userName.trim()) newErrors.userName = 'User Name is required';
+        if (!formData.user.password.trim() || !passwordRegex.test(formData.user.password)) newErrors.password = 'Password must be between 8 and 12 characters long';
+        if (!isUsernameAvailable) newErrors.userName = 'Username is already taken';
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!validateForm()) return;
+
         setMsg('');
 
         fetch("http://localhost:5042/api/PatientLogin/SavePatient/Insert", {
@@ -52,7 +100,6 @@ export default function SavePatientForm() {
             body: JSON.stringify(formData)
         })
         .then(response => {
-        
             if (!response.ok) {
                 return response.text().then(text => {
                     throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
@@ -62,7 +109,6 @@ export default function SavePatientForm() {
         })
         .then(data => {
             console.log(data);
-            console.log('Response data:', data);
             setMsg('Patient saved successfully!');
         })
         .catch(error => {
@@ -84,8 +130,8 @@ export default function SavePatientForm() {
                         name="patientName"
                         value={formData.patientName}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.patientName && <div className="text-danger">{errors.patientName}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="dateOfBirth" className="form-label">Date of Birth</label>
@@ -96,8 +142,8 @@ export default function SavePatientForm() {
                         name="dateOfBirth"
                         value={formData.dateOfBirth}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.dateOfBirth && <div className="text-danger">{errors.dateOfBirth}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="bloodGroup" className="form-label">Blood Group</label>
@@ -108,8 +154,8 @@ export default function SavePatientForm() {
                         name="bloodGroup"
                         value={formData.bloodGroup}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.bloodGroup && <div className="text-danger">{errors.bloodGroup}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="patientAddress" className="form-label">Patient Address</label>
@@ -120,8 +166,8 @@ export default function SavePatientForm() {
                         name="patientAddress"
                         value={formData.patientAddress}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.patientAddress && <div className="text-danger">{errors.patientAddress}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="patientAadharNo" className="form-label">Aadhar Number</label>
@@ -132,8 +178,8 @@ export default function SavePatientForm() {
                         name="patientAadharNo"
                         value={formData.patientAadharNo}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.patientAadharNo && <div className="text-danger">{errors.patientAadharNo}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="patientEmailId" className="form-label">Email ID</label>
@@ -144,8 +190,8 @@ export default function SavePatientForm() {
                         name="patientEmailId"
                         value={formData.patientEmailId}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.patientEmailId && <div className="text-danger">{errors.patientEmailId}</div>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="patientContactNo" className="form-label">Contact Number</label>
@@ -156,8 +202,8 @@ export default function SavePatientForm() {
                         name="patientContactNo"
                         value={formData.patientContactNo}
                         onChange={handleChange}
-                        required
                     />
+                    {errors.patientContactNo && <div className="text-danger">{errors.patientContactNo}</div>}
                 </div>
                 <div className="mb-3">
                     <h4>User Details</h4>
@@ -170,8 +216,9 @@ export default function SavePatientForm() {
                             name="user.userName"
                             value={formData.user.userName}
                             onChange={handleChange}
-                            required
                         />
+                        {errors.userName && <div className="text-danger">{errors.userName}</div>}
+                        {!isUsernameAvailable && <div className="text-danger">Username is already taken</div>}
                     </div>
                     <div className="mb-3">
                         <label htmlFor="user.password" className="form-label">Password</label>
@@ -182,32 +229,8 @@ export default function SavePatientForm() {
                             name="user.password"
                             value={formData.user.password}
                             onChange={handleChange}
-                            required
                         />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="user.roleId" className="form-label">Role ID</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="user.roleId"
-                            name="user.roleId"
-                            value={formData.user.roleId}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="user.active" className="form-label">Active</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="user.active"
-                            name="user.active"
-                            value={formData.user.active}
-                            onChange={handleChange}
-                            required
-                        />
+                        {errors.password && <div className="text-danger">{errors.password}</div>}
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Save Patient</button>

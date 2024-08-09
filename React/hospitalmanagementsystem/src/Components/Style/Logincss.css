@@ -1,0 +1,114 @@
+/* login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+}
+
+.login-form {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px;
+}
+
+.login-form .form-label {
+    font-weight: bold;
+}
+
+.login-form .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.login-form .btn {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.login-form .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.login-form .btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.login-form .text-danger {
+    color: #dc3545;
+}
+
+/* Container for the form */
+.container-fluid.form-container {
+    display: flex;
+    position: absolute; /* Fix the content in place */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Matching background color */
+    padding: 20px;
+}
+
+/* Form border styling */
+.form-border {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px; /* Adjust max-width as needed */
+    width: 100%;
+    margin: 20px;
+}
+
+/* Input styles */
+.form-control.input-error {
+    border-color: #dc3545;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.2);
+}
+
+.form-control.input-normal {
+    border-color: #ccc;
+}
+
+/* Error message styles */
+.text-danger {
+    font-size: 0.875rem;
+    color: #dc3545;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Adding margin-top to the success/error message */
+.message {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+

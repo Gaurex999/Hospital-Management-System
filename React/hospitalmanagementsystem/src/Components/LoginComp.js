@@ -3,7 +3,10 @@ import { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest, loginSuccess, loginFailure } from '../Components/Slice';
-import '../Components/Style/login.css'
+import '../Components/Style/NavBarLogin.css'
+import '../Components/Style/Logincss.css';
+import hospital from '../Components/Style/H3.jpg' 
+
 export default function LoginComp() {
     const init = {
         uname: "",
@@ -65,34 +68,47 @@ export default function LoginComp() {
     };
 
     return (
-        <div>
-            <form onSubmit={sendData}>
-                <div className="mb-4">
-                    <label htmlFor="uname" className="form-label">Username: </label>
-                    <input 
-                        type="text" 
-                        className="form-control" 
-                        id="uname" 
-                        name="uname" 
-                        value={info.uname} 
-                        onChange={(e) => dispatch({ type: 'update', fld: 'uname', val: e.target.value })}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="pwd" className="form-label">Password:</label>
-                    <input 
-                        type="password" 
-                        id="pwd" 
-                        className="form-control" 
-                        name="pwd" 
-                        value={info.pwd} 
-                        onChange={(e) => dispatch({ type: 'update', fld: 'pwd', val: e.target.value })}
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary mb-2" style={{ marginRight: "10px" }}>Submit</button>
-                <button type="button" className="btn btn-primary mb-2" onClick={() => dispatch({ type: 'reset' })}>Clear</button>
-            </form>
-            <p>{msg}</p>
+        
+        <div
+            className="container-fluid form-container"
+            style={{
+                backgroundImage: `url(${hospital})`,
+                backgroundSize: 'cover', // Ensure the image covers the entire container
+                backgroundPosition: 'center', // Center the image
+                backgroundRepeat: 'no-repeat', // Prevent repeating the image
+                height: '100vh' // Make sure the container takes the full height of the viewport
+            }}
+        >
+            <div className="form-border" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px' }}>
+                <h2 className="text-center" style={{color:"black"}}>Login</h2>
+                <form onSubmit={sendData}>
+                    <div className="mb-4">
+                        <label htmlFor="uname" className="form-label"  style={{color:"black"}}>Username: </label>
+                        <input 
+                            type="text" 
+                            className={`form-control ${info.uname ? 'input-normal' : 'input-error'}`}
+                            id="uname" 
+                            name="uname" 
+                            value={info.uname} 
+                            onChange={(e) => dispatch({ type: 'update', fld: 'uname', val: e.target.value })}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="pwd" className="form-label"  style={{color:"black"}}>Password:</label>
+                        <input 
+                            type="password" 
+                            id="pwd" 
+                            className={`form-control ${info.pwd ? 'input-normal' : 'input-error'}`} 
+                            name="pwd" 
+                            value={info.pwd} 
+                            onChange={(e) => dispatch({ type: 'update', fld: 'pwd', val: e.target.value })}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary mb-2" style={{ marginRight: "10px",}}>Submit</button>
+                    <button type="button" className="btn btn-primary mb-2" onClick={() => dispatch({ type: 'reset' })}>Clear</button>
+                </form>
+                <p className="message">{msg}</p>
+            </div>
         </div>
     );
 }
