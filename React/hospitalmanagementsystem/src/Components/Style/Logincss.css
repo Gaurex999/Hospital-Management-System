@@ -54,7 +54,7 @@
 /* Container for the form */
 .container-fluid.form-container {
     display: flex;
-    position: absolute; /* Fix the content in place */
+    position: fi; /* Fix the content in place */
     justify-content: center;
     align-items: center;
     min-height: 100vh;

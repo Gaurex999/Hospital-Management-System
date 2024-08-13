@@ -8,9 +8,10 @@
   background-color: #ffffff; /* Light background color */
 }
 
-/* Ensure the content below the navbar doesn't overlap with it */
+/* Adjust content positioning to avoid extra space */
 body {
-  margin-top: 56px; /* Adjust this value based on the height of your navbar */
+  padding-top: 56px; /* Adjust based on the height of your navbar */
+  margin: 0; /* Remove any additional margin */
 }
 
 /* Style the navbar brand */
