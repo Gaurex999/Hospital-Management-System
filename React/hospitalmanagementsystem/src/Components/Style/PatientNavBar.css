@@ -1,0 +1,76 @@
+/* Ensure the navbar has a light background and is fixed at the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff; /* Light background color */
+  }
+  
+  /* Adjust content positioning to avoid extra space */
+  body {
+    padding-top: 56px; /* Adjust based on the height of your navbar */
+    margin: 0; /* Remove any additional margin */
+  }
+  
+  /* Style the navbar brand */
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff; /* Bright color for the brand */
+  }
+  
+  /* Navbar toggler button customization */
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;base64,..."); /* Use a custom icon if needed */
+  }
+  
+  /* Navbar link styling */
+  .nav-link {
+    color: #343a40; /* Dark gray color for text */
+    margin-right: 1rem; /* Space between nav items */
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+    text-decoration: underline; /* Add underline effect */
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #007bff; /* Highlight color for active link */
+  }
+  
+  /* Style for disabled link */
+  .nav-link.disabled {
+    color: #6c757d; /* Lighter gray for disabled link */
+  }
+  
+  /* Navbar responsiveness */
+  @media (max-width: 992px) {
+    .navbar-nav {
+      text-align: center;
+    }
+  
+    .navbar-nav .nav-item {
+      margin: 0.5rem 0; /* Adjust spacing for mobile view */
+    }
+  }
+  
+  /* Additional responsive adjustments */
+  @media (max-width: 576px) {
+    .navbar-brand {
+      font-size: 1.25rem; /* Adjust font size for smaller screens */
+    }
+  
+    .nav-link {
+      font-size: 0.875rem; /* Smaller font size for mobile view */
+    }
+  }
+  
