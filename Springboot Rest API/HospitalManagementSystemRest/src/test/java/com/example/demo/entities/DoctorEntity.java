@@ -31,7 +31,7 @@ public class DoctorEntity {
 	    @Column(name = "address")
 	    private String address;
 
-	    @Column(name = "qualification")
+	    @Column(name = "qualification")	
 	    private String qualification;
 
 	    @Column(name = "contact_no")

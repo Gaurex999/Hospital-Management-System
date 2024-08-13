@@ -32,14 +32,14 @@ export default function LoginComp() {
 
     const sendData = (e) => {
         e.preventDefault();
-        setMsg(""); // Clear previous messages
+        setMsg("");
 
         reduxDispatch(loginRequest());
 
         const reqOption = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ UserName: info.uname, Password: info.pwd }) // Ensure the keys match your API model
+            body: JSON.stringify({ UserName: info.uname, Password: info.pwd }) 
         };
 
         fetch("http://localhost:5042/api/Doctor/UpdateVerifyLogin", reqOption)
@@ -47,17 +47,23 @@ export default function LoginComp() {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                return response.json(); // Parse JSON response
+                return response.json(); 
             })
             .then(data => {
+                localStorage.setItem("loggedUser", JSON.stringify(data));
                 if (data.roleId === 1) {
                     reduxDispatch(loginSuccess(data));
                     navigate("/patient_home");
                 } else if (data.roleId === 2) {
                     reduxDispatch(loginSuccess(data));
                     navigate("/doctor_home");
-                } else {
-                    setMsg("Unknown role");
+                } else if(data.roleId === 3){
+                    reduxDispatch(loginSuccess(data));
+                    navigate("/Admin_home");
+                }
+                else
+                {
+                    setMsg("unknow role")
                 }
             })
             .catch(error => {
@@ -73,10 +79,10 @@ export default function LoginComp() {
             className="container-fluid form-container"
             style={{
                 backgroundImage: `url(${hospital})`,
-                backgroundSize: 'cover', // Ensure the image covers the entire container
-                backgroundPosition: 'center', // Center the image
-                backgroundRepeat: 'no-repeat', // Prevent repeating the image
-                height: '100vh' // Make sure the container takes the full height of the viewport
+                backgroundSize: 'cover', 
+                backgroundPosition: 'center', 
+                backgroundRepeat: 'no-repeat', 
+                height: '100vh' 
             }}
         >
             <div className="form-border" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px' }}>

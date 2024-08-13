@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../Components/Style/register.css";
 
 export default function SavePatientForm() {
     const [formData, setFormData] = useState({
@@ -20,7 +21,6 @@ export default function SavePatientForm() {
 
     const [errors, setErrors] = useState({});
     const [msg, setMsg] = useState('');
-    const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
 
     // Handle input change
     const handleChange = (e) => {
@@ -41,27 +41,8 @@ export default function SavePatientForm() {
                 [name]: value
             };
         });
-        
-        // Check username availability if it's the username field
-        if (name === 'user.userName') {
-            checkUsernameAvailability(value);
-        }
     };
 
-    // Check if username is available
-    const checkUsernameAvailability = (uname) => {
-        fetch(`http://localhost:5042/api/PatientLogin/CheckUsername?username=${encodeURIComponent(uname )}`)
-            .then(response => response.json())
-            .then(data => {
-                setIsUsernameAvailable(data.isAvailable);
-            })
-            .catch(error => {
-                console.error('Error checking username availability:', error);
-                setIsUsernameAvailable(false);
-            });
-    };
-
-    // Validate form data using regex
     const validateForm = () => {
         const newErrors = {};
 
@@ -81,7 +62,6 @@ export default function SavePatientForm() {
         if (!formData.patientContactNo.trim() || !contactRegex.test(formData.patientContactNo)) newErrors.patientContactNo = 'Contact Number must be a 10-digit number';
         if (!formData.user.userName.trim()) newErrors.userName = 'User Name is required';
         if (!formData.user.password.trim() || !passwordRegex.test(formData.user.password)) newErrors.password = 'Password must be between 8 and 12 characters long';
-        if (!isUsernameAvailable) newErrors.userName = 'Username is already taken';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -122,7 +102,7 @@ export default function SavePatientForm() {
             <h2>Save Patient</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="patientName" className="form-label">Patient Name</label>
+                    <label htmlFor="patientName" className="form-label" style={{color:'black'}}>Patient Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -131,10 +111,10 @@ export default function SavePatientForm() {
                         value={formData.patientName}
                         onChange={handleChange}
                     />
-                    {errors.patientName && <div className="text-danger">{errors.patientName}</div>}
+                    {errors.patientName && <div className="text-danger" style={{color:'black'}}>{errors.patientName}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="dateOfBirth" className="form-label">Date of Birth</label>
+                    <label htmlFor="dateOfBirth" className="form-label" style={{color:'black'}}>Date of Birth</label>
                     <input
                         type="date"
                         className="form-control"
@@ -146,7 +126,7 @@ export default function SavePatientForm() {
                     {errors.dateOfBirth && <div className="text-danger">{errors.dateOfBirth}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="bloodGroup" className="form-label">Blood Group</label>
+                    <label htmlFor="bloodGroup" className="form-label" style={{color:'black'}}>Blood Group</label>
                     <input
                         type="text"
                         className="form-control"
@@ -158,7 +138,7 @@ export default function SavePatientForm() {
                     {errors.bloodGroup && <div className="text-danger">{errors.bloodGroup}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="patientAddress" className="form-label">Patient Address</label>
+                    <label htmlFor="patientAddress" className="form-label" style={{color:'black'}}>Patient Address</label>
                     <input
                         type="text"
                         className="form-control"
@@ -170,7 +150,7 @@ export default function SavePatientForm() {
                     {errors.patientAddress && <div className="text-danger">{errors.patientAddress}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="patientAadharNo" className="form-label">Aadhar Number</label>
+                    <label htmlFor="patientAadharNo" className="form-label" style={{color:'black'}}>Aadhar Number</label>
                     <input
                         type="text"
                         className="form-control"
@@ -182,7 +162,7 @@ export default function SavePatientForm() {
                     {errors.patientAadharNo && <div className="text-danger">{errors.patientAadharNo}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="patientEmailId" className="form-label">Email ID</label>
+                    <label htmlFor="patientEmailId" className="form-label" style={{color:'black'}}>Email ID</label>
                     <input
                         type="email"
                         className="form-control"
@@ -194,7 +174,7 @@ export default function SavePatientForm() {
                     {errors.patientEmailId && <div className="text-danger">{errors.patientEmailId}</div>}
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="patientContactNo" className="form-label">Contact Number</label>
+                    <label htmlFor="patientContactNo" className="form-label" style={{color:'black'}}>Contact Number</label>
                     <input
                         type="text"
                         className="form-control"
@@ -208,7 +188,7 @@ export default function SavePatientForm() {
                 <div className="mb-3">
                     <h4>User Details</h4>
                     <div className="mb-3">
-                        <label htmlFor="user.userName" className="form-label">User Name</label>
+                        <label htmlFor="user.userName" className="form-label" style={{color:'black'}}>User Name</label>
                         <input
                             type="text"
                             className="form-control"
@@ -218,10 +198,9 @@ export default function SavePatientForm() {
                             onChange={handleChange}
                         />
                         {errors.userName && <div className="text-danger">{errors.userName}</div>}
-                        {!isUsernameAvailable && <div className="text-danger">Username is already taken</div>}
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="user.password" className="form-label">Password</label>
+                        <label htmlFor="user.password" className="form-label" style={{color:'black'}}>Password</label>
                         <input
                             type="password"
                             className="form-control"

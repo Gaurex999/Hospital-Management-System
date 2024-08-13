@@ -1815,3 +1815,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.to
 2024-08-09 21:04:59,054 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management system\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
 2024-08-11 12:55:43,436 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@136c1535{STOPPING}[12.0.6,sto=0]
 2024-08-11 12:55:43,451 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@62ebc3d0{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-08-11 14:28:15,917 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
