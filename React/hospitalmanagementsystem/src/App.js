@@ -6,6 +6,7 @@ import { Route, Router, Routes } from 'react-router-dom';
 import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
+import MedicalRecordsComp from './Components/MedicalRecordsComp';
  
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/patient_home" element={<PatientHome />} />
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
+        <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
       </Routes>
     </header>
   </div>
