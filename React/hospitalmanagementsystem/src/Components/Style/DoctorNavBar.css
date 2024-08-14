@@ -1,16 +1,8 @@
-/* Ensure that the wrapper takes full height of the viewport */
-.doctor-home-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Full viewport height */
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Style for the navbar */
-  .navbar {
+/* Style for the navbar */
+.navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
@@ -25,14 +17,12 @@
     flex: 1; /* Allow this container to take up available space */
     padding-top: 56px; /* Adjust based on the height of your navbar */
     margin: 0;
+    overflow: auto; /* Allow scrolling within the content area */
   }
   
-  /* Style for the header */
   .doctor-home-content h1 {
     font-size: 2rem; /* Adjust as needed */
     color: #333; /* Dark color for better contrast */
     margin: 0; /* Remove default margin */
   }
-  .doctor-home-wrapper {
-  overflow: hidden;
-}
+  

@@ -51,6 +51,7 @@ export default function LoginComp() {
             })
             .then(data => {
                 localStorage.setItem("loggedUser", JSON.stringify(data));
+                console.log(localStorage.getItem("loggedUser"));
                 if (data.roleId === 1) {
                     reduxDispatch(loginSuccess(data));
                     navigate("/patient_home");
@@ -118,3 +119,4 @@ export default function LoginComp() {
         </div>
     );
 }
+ 

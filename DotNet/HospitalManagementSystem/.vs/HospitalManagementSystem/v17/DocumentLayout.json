@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Hospital Management System\\DotNet\\HospitalManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hospital management system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hospital management system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\hospitalsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\hospitalsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hospital management system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hospital management system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -82,7 +82,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
@@ -94,8 +94,7 @@
               "RelativeToolTip": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
               "ViewState": "AQIAACcAAAAAAAAAAAAswCsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T19:31:43.708Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T19:31:43.708Z"
             },
             {
               "$type": "Document",
@@ -107,18 +106,17 @@
               "RelativeToolTip": "HospitalManagementSystem\\Controllers\\DoctorController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAGUAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T09:42:29.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-06T09:42:29.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Hospital Management System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Program.cs",
               "ToolTip": "C:\\Hospital Management System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Program.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAQwBwAAABeAAAA",
+              "ViewState": "AQIAABoAAAAAAAAAAAAgwBwAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T18:22:10.266Z",
               "EditorCaption": ""
@@ -173,13 +171,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HospitalSystemContext.cs",
               "DocumentMoniker": "C:\\Hospital Management System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "ToolTip": "C:\\Hospital Management System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAABdAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAA4wCgAAABdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T06:31:19.929Z",
               "EditorCaption": ""
