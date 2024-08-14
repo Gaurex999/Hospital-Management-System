@@ -1815,3 +1815,24 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.apache.to
 2024-08-09 21:04:59,054 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management system\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
 2024-08-11 12:55:43,436 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@136c1535{STOPPING}[12.0.6,sto=0]
 2024-08-11 12:55:43,451 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@62ebc3d0{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2024-08-11 13:47:53,406 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-08-12 12:14:32,383 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-08-12 12:16:19,557 [Worker-25: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-08-12 12:16:19,578 [Worker-25: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:16:19,582 [Worker-25: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management System\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
+2024-08-12 12:19:22,868 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-08-12 12:19:22,877 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:19:22,880 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management System\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
+2024-08-12 12:21:45,557 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:21:45,557 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:21:45,560 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management System\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
+2024-08-12 12:25:46,359 [Worker-36: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:25:46,360 [Worker-36: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-08-12 12:25:46,363 [Worker-36: Launching HospitalManagementSystemRestApplication] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory F:\Hospital Management System\Springboot Rest API\HospitalManagementSystemRest\src\test\resources
+2024-08-12 12:25:58,873 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.6; built: 2024-01-30T02:43:24.387Z; git: 78ab6e6ba163f89cdd97f2ae0283fbb5e371cfaf; jvm 17.0.10+7
+2024-08-12 12:25:58,944 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@4b37b740{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@62a10753{STARTED}}
+2024-08-12 12:25:58,944 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2024-08-12 12:25:58,978 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@423006ba{HTTP/1.1, (http/1.1)}{127.0.0.1:55669}
+2024-08-12 12:25:59,000 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@4f064c75{STARTING}[12.0.6,sto=0] @751300ms
+2024-08-13 08:03:33,918 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@4f064c75{STOPPING}[12.0.6,sto=0]
+2024-08-13 08:03:33,922 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@423006ba{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
