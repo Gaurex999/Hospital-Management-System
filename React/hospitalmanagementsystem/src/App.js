@@ -9,6 +9,9 @@ import ViewAppointment from './Components/ViewAppointments';
 
 import MedicalRecordsComp from './Components/MedicalRecordsComp';
 
+import UpdatePatientProfile from './Components/UpdatePatientProfile';
+
+
 import SlotManager from './Components/SlotManager';
 
 
@@ -58,6 +61,10 @@ function App() {
 
 
         <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
+
+        <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>
+
+
 
       </Routes>
     </header>
