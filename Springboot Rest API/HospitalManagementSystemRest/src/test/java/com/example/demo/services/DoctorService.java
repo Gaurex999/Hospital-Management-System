@@ -11,7 +11,7 @@ import com.example.demo.repositories.DoctorRepository;
 
 @Service
 public class DoctorService {
-	 @Autowired
+	  @Autowired
 	    private DoctorRepository doctorRepository;
 
 	    public List<DoctorEntity> getAllDoctors() {
@@ -31,6 +31,11 @@ public class DoctorService {
 
 	    public void deleteDoctor(int doctorId) {
 	        doctorRepository.deleteById(doctorId);
+	    }
+
+	    // Method to get doctor by userId
+	    public DoctorEntity getDoctorByUserId(Integer userId) {
+	        return doctorRepository.findByUserId(userId);
 	    }
 	    
 	}
