@@ -7,6 +7,7 @@ import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
 import MedicalRecordsComp from './Components/MedicalRecordsComp';
+import UpdatePatientProfile from './Components/UpdatePatientProfile';
  
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
         <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
+        <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>
       </Routes>
     </header>
   </div>

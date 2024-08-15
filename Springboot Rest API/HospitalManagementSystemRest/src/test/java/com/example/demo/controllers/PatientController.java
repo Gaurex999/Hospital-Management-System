@@ -1,20 +1,12 @@
 package com.example.demo.controllers;
 
-import java.util.List; // Corrected import
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entities.PatientEntity;
 import com.example.demo.services.PatientService;
@@ -28,7 +20,7 @@ public class PatientController {
 
     @GetMapping
     public ResponseEntity<List<PatientEntity>> getAllPatients() {
-        List<PatientEntity> patients = patientService.getAllPatients(); // Corrected method call
+        List<PatientEntity> patients = patientService.getAllPatients();
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
@@ -38,17 +30,16 @@ public class PatientController {
         return patient.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                       .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
 
     @PostMapping
     public ResponseEntity<PatientEntity> createPatient(@RequestBody PatientEntity patient) {
-        PatientEntity newPatient = patientService.savePatient(patient); // Corrected method call
+        PatientEntity newPatient = patientService.savePatient(patient);
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<PatientEntity> updatePatient(@PathVariable("id") int patientId, @RequestBody PatientEntity patientDetails) {
-        Optional<PatientEntity> patient = patientService.getPatientById(patientId); // Corrected method call
+        Optional<PatientEntity> patient = patientService.getPatientById(patientId);
         
         if (patient.isPresent()) {
             PatientEntity updatedPatient = patient.get();
@@ -60,16 +51,25 @@ public class PatientController {
             updatedPatient.setPatientEmailId(patientDetails.getPatientEmailId());
             updatedPatient.setPatientContactNo(patientDetails.getPatientContactNo());
 
-            final PatientEntity savedPatient = patientService.savePatient(updatedPatient); // Corrected method call
+            PatientEntity savedPatient = patientService.savePatient(updatedPatient);
             return new ResponseEntity<>(savedPatient, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{id}") // Moved out of @PutMapping method
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable("id") int patientId) {
-        patientService.deletePatient(patientId); // Corrected method call
+        patientService.deletePatient(patientId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    // API endpoint for updating patient profile
+    @PutMapping("/profile/{id}")
+    public ResponseEntity<PatientEntity> updatePatientProfile(@PathVariable("id") int patientId, @RequestBody PatientEntity patientDetails) {
+        Optional<PatientEntity> patient = patientService.updatePatientProfile(patientId, patientDetails);
+        
+        return patient.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                      .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
