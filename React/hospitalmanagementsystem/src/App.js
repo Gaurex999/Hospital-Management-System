@@ -6,12 +6,15 @@ import { Route, Router, Routes } from 'react-router-dom';
 import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
-<<<<<<< HEAD
+
 import MedicalRecordsComp from './Components/MedicalRecordsComp';
-=======
+
 import SlotManager from './Components/SlotManager';
 
->>>>>>> bdbff32334effbb217b76adb2d93b354e9f0e79f
+
+
+import MedicalRecordsComp from './Components/MedicalRecordsComp';
+
  
 function App() {
   return (
@@ -48,11 +51,14 @@ function App() {
         <Route path="/patient_home" element={<PatientHome />} />
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
-<<<<<<< HEAD
+
         <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
-=======
+
         <Route path='/SlotManager' element={<SlotManager/>}/>
->>>>>>> bdbff32334effbb217b76adb2d93b354e9f0e79f
+
+
+        <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
+
       </Routes>
     </header>
   </div>
