@@ -7,4 +7,5 @@ import com.example.demo.entities.DoctorEntity;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<DoctorEntity, Integer> {
+	  DoctorEntity findByUserId(Integer userId);
 }

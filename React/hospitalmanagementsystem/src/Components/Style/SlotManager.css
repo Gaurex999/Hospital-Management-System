@@ -1,0 +1,83 @@
+/* Container for the entire SlotManager component */
+.slot-manager-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Title styling */
+.slot-manager-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Styling for form elements */
+.slot-manager-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.slot-manager-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.slot-manager-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.slot-manager-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.slot-manager-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Styling for the slot list */
+.slot-list {
+    margin-top: 20px;
+}
+
+.slot-list h2 {
+    color: #333;
+}
+
+.slot-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.slot-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.slot-list li:last-child {
+    border-bottom: none;
+}
