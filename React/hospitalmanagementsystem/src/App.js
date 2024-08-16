@@ -7,7 +7,7 @@ import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
 
-import MedicalRecordsComp from './Components/MedicalRecordsComp';
+  
 
 import UpdatePatientProfile from './Components/UpdatePatientProfile';
 

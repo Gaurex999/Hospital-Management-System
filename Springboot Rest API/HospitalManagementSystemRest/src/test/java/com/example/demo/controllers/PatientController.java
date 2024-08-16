@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.entities.PatientEntity;
 import com.example.demo.services.PatientService;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/patients")
 public class PatientController {
