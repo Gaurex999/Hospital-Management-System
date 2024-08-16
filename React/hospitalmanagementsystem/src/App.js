@@ -6,6 +6,18 @@ import { Route, Router, Routes } from 'react-router-dom';
 import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
+
+
+  
+
+import UpdatePatientProfile from './Components/UpdatePatientProfile';
+
+
+import SlotManager from './Components/SlotManager';
+
+
+
+
  
 function App() {
   return (
