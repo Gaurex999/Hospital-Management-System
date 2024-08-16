@@ -1,129 +1,195 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function UpdatePatientProfile({ patientId }) {
-    const [patient, setPatient] = useState({
+function UpdatePatientProfile() {
+    const [patientId, setPatientId] = useState(''); // Set this to the logged-in patient's ID if available
+    const [patientDetails, setPatientDetails] = useState({
         patientName: '',
         dateOfBirth: '',
         bloodGroup: '',
         patientAddress: '',
         patientAadharNo: '',
         patientEmailId: '',
-        patientContactNo: '',
+        patientContactNo: ''
     });
 
-    const [originalPatient, setOriginalPatient] = useState({});
-
-    // Fetch the patient data when the component loads
     useEffect(() => {
-        fetch(`http://localhost:8080/api/patients/patient?id=${patientId}`)
-            .then(response => response.json())
-            .then(data => {
-                setPatient(data);
-                setOriginalPatient(data);
-            });
+        if (patientId) {
+            // Fetch the existing patient data by patient ID
+            const fetchPatientData = () => {
+                fetch(`http://localhost:8080/api/patients/patient?id=${patientId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        const contentType = response.headers.get('Content-Type');
+                        if (contentType && contentType.includes('application/json')) {
+                            return response.json();
+                        } else {
+                            throw new Error('Response is not JSON');
+                        }
+                    })
+                    .then(data => {
+                        setPatientDetails(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching patient data:', error);
+                        // Handle error by showing a message to the user or taking other actions
+                    });
+            };
+
+            fetchPatientData();
+        }
     }, [patientId]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPatient({
-            ...patient,
-            [name]: value,
+        setPatientDetails({
+            ...patientDetails,
+            [name]: value
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const updatedFields = {};
-        Object.keys(patient).forEach(key => {
-            if (patient[key] !== originalPatient[key]) {
-                updatedFields[key] = patient[key];
-            }
-        });
-
-        fetch(`/api/patients/${patientId}/profile`, {
+        const url = `http://localhost:8080/api/patients/profile/${patientId}`;
+        const requestOptions = {
             method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updatedFields),
-        })
-            .then(response => {
-                if (response.ok) {
-                    alert('Profile updated successfully!');
-                } else {
-                    alert('Failed to update profile');
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(patientDetails)
+        };
+
+        fetch(url, requestOptions)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
+                const contentType = response.headers.get('Content-Type');
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json();
+                } else {
+                    throw new Error('Response is not JSON');
+                }
+            })
+            .then((data) => {
+                console.log('Patient profile updated:', data);
+                // Handle success - maybe show a success message or redirect
+            })
+            .catch((error) => {
+                console.error('There was a problem with the update operation:', error);
+                // Handle error - show an error message to the user
             });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Name:</label>
-                <input
-                    type="text"
-                    name="patientName"
-                    value={patient.patientName}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Date of Birth:</label>
-                <input
-                    type="date"
-                    name="dateOfBirth"
-                    value={patient.dateOfBirth}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Blood Group:</label>
-                <input
-                    type="text"
-                    name="bloodGroup"
-                    value={patient.bloodGroup}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Address:</label>
-                <input
-                    type="text"
-                    name="patientAddress"
-                    value={patient.patientAddress}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Aadhar No:</label>
-                <input
-                    type="text"
-                    name="patientAadharNo"
-                    value={patient.patientAadharNo}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="patientEmailId"
-                    value={patient.patientEmailId}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label>Contact No:</label>
-                <input
-                    type="text"
-                    name="patientContactNo"
-                    value={patient.patientContactNo}
-                    onChange={handleChange}
-                />
-            </div>
-            <button type="submit">Update Profile</button>
-        </form>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4">Update Patient Profile</h2>
+            <form onSubmit={handleSubmit} className="table-responsive">
+                <table className="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Patient ID:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={patientId}
+                                    onChange={(e) => setPatientId(e.target.value)}
+                                    placeholder="Enter Patient ID"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Name:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="patientName"
+                                    className="form-control"
+                                    value={patientDetails.patientName}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Date of Birth:</th>
+                            <td>
+                                <input
+                                    type="date"
+                                    name="dateOfBirth"
+                                    className="form-control"
+                                    value={patientDetails.dateOfBirth}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Blood Group:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="bloodGroup"
+                                    className="form-control"
+                                    value={patientDetails.bloodGroup}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Address:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="patientAddress"
+                                    className="form-control"
+                                    value={patientDetails.patientAddress}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Aadhar No:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="patientAadharNo"
+                                    className="form-control"
+                                    value={patientDetails.patientAadharNo}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Email ID:</th>
+                            <td>
+                                <input
+                                    type="email"
+                                    name="patientEmailId"
+                                    className="form-control"
+                                    value={patientDetails.patientEmailId}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Contact No:</th>
+                            <td>
+                                <input
+                                    type="text"
+                                    name="patientContactNo"
+                                    className="form-control"
+                                    value={patientDetails.patientContactNo}
+                                    onChange={handleChange}
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div className="text-center">
+                    <button type="submit" className="btn btn-primary">Update Profile</button>
+                </div>
+            </form>
+        </div>
     );
 }
 
