@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DoctorNavbar from './DoctorNavBar';
 
 function MedicalRecordsComp() {
     const [patientId, setPatientId] = useState('');
@@ -25,6 +26,7 @@ function MedicalRecordsComp() {
 
     return (
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+            <DoctorNavbar/>
             <h1>Prescription List</h1>
             <input
                 type="number"

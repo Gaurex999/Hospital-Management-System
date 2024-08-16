@@ -30,7 +30,7 @@ public class PatientService {
     public void deletePatient(int patientId) {
         patientRepository.deleteById(patientId);
     }
-
+    
     public Optional<PatientEntity> updatePatientProfile(int patientId, PatientEntity patientDetails) {
         Optional<PatientEntity> patient = patientRepository.findById(patientId);
         
