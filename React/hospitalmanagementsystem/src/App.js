@@ -6,18 +6,6 @@ import { Route, Router, Routes } from 'react-router-dom';
 import SavePatientForm from './Components/RegisterComp';
 import Doctor from './Components/Doctor';
 import ViewAppointment from './Components/ViewAppointments';
-
-import MedicalRecordsComp from './Components/MedicalRecordsComp';
-
-import UpdatePatientProfile from './Components/UpdatePatientProfile';
-
-
-import SlotManager from './Components/SlotManager';
-
-
-
-
-
  
 function App() {
   return (
@@ -26,7 +14,7 @@ function App() {
      <header className="App-header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">Hospital Management System</a>
+            <a className="navbar-brand" href="#">MyApp</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -54,18 +42,6 @@ function App() {
         <Route path="/patient_home" element={<PatientHome />} />
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
-
-        
-
-        <Route path='/SlotManager' element={<SlotManager/>}/>
-
-
-        <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
-
-        <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>
-
-
-
       </Routes>
     </header>
   </div>
