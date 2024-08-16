@@ -26,10 +26,13 @@ public class PatientController {
     }
 
     @GetMapping("/patient")
-    public ResponseEntity<PatientEntity> getPatientById(@RequestParam("id") int patientId) {
+    public ResponseEntity<?> getPatientById(@RequestParam("id") int patientId) {
         Optional<PatientEntity> patient = patientService.getPatientById(patientId);
-        return patient.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                      .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        if (patient.isPresent()) {
+            return new ResponseEntity<>(patient.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("{\"error\":\"Patient not found\"}", HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping

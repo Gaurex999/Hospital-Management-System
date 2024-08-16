@@ -16,7 +16,7 @@ import SlotManager from './Components/SlotManager';
 
 
 
-import MedicalRecordsComp from './Components/MedicalRecordsComp';
+
 
  
 function App() {
@@ -55,7 +55,7 @@ function App() {
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
 
-        <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
+        
 
         <Route path='/SlotManager' element={<SlotManager/>}/>
 
