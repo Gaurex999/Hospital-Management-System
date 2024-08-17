@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { json } from "react-router-dom"
 import DoctorNavbar from "./DoctorNavBar";
 
-export default function Doctor() {
-    const [doctorName, setDoctorName] = useState("");
-    const [doctorInfo, setDoctorInfo] = useState({});
-    const [error, setError] = useState(null);
+export default function Doctor()
+{
+    
+    useEffect = () =>{
+   const loginid = JSON.parse(localStorage.getItem("loggeedUser")).login_id;
+    fetch("http://localhost:8080/api/patients/patient?id="+loginid)
+    .then(resp => resp.json())
+    .then(obj => {
+        localStorage.setItem("loggedPatient",JSON.stringify(obj))
 
-    useEffect(() => {
-        const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-        setDoctorName(loggedUser.userName);
+    },[] )
 
         const loginId = loggedUser.userId;
         fetch(`http://localhost:8080/api/doctors/byUserId?userId=${loginId}`)
@@ -30,12 +34,17 @@ export default function Doctor() {
             });
     }, []);
 
-    return (
-        <div>
-            <div className="doctor-home-container">
-                <DoctorNavbar />
-                <div className="doctor-home-content" />
-            </div>
+    }
+    return(
+
+
+    //     <div>
+    //    <div className="doctor-home-container">
+    //   <DoctorNavbar />
+    //   <div className="doctor-home-content" />
+    //   </div>
+    //   <h1>Doctor Home</h1>
+    //    </div>
 
             <h1>Welcome, Dr. {doctorName}</h1>
             {error ? (
@@ -55,4 +64,16 @@ export default function Doctor() {
             )}
         </div>
     );
+
+    <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <DoctorNavbar />
+    
+    <h1 style={{ fontSize: '2.5rem' , marginBottom: '58.5rem'}}>
+      Doctor Home
+    </h1>
+  </div>
+  
+  
+    )
 }
+
