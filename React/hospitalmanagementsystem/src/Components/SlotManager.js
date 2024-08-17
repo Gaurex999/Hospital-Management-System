@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import DoctorNavbar from './DoctorNavBar';
 
 const SlotManager = () => {
     const [doctorId, setDoctorId] = useState('');
@@ -8,10 +9,39 @@ const SlotManager = () => {
     const [slots, setSlots] = useState([]);
     const [error, setError] = useState(null);
 
+    useEffect(() => {
+        const storedDoctorId = localStorage.getItem("doctorId");
+        if (storedDoctorId) {
+            setDoctorId(storedDoctorId);
+        }
+    }, []);
+
+    const validateInput = () => {
+        if (!doctorId || !startTime || !endTime || !slotDate) {
+            setError('All fields are required.');
+            return false;
+        }
+        return true;
+    };
+
     const handleGenerateSlots = () => {
-        const generateUrl = `http://localhost:8080/slots/generate?doctorId=${doctorId}&startTime=${startTime}&endTime=${endTime}&slotDate=${slotDate}`;
-        
-        fetch(generateUrl, { method: 'POST' })
+        if (!validateInput()) return;
+
+        const generateUrl = 'http://localhost:8080/slots/generate';
+        const requestBody = {
+            doctorId: parseInt(doctorId),
+            startTime: startTime,
+            endTime: endTime,
+            slotDate: slotDate
+        };
+
+        fetch(generateUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        })
         .then(response => {
             if (!response.ok) {
                 return response.text().then(text => { throw new Error(text); });
@@ -20,21 +50,33 @@ const SlotManager = () => {
             fetchSlots(); // Fetch slots after generating
         })
         .catch(err => {
-            console.error('Error:', err);
+            console.error('Error during slot generation:', err);
             setError(err.message || 'Failed to generate slots.');
         });
     };
 
     const fetchSlots = () => {
-        const fetchUrl = `http://localhost:8080/slots/fetch?doctorId=${doctorId}`;
+        const storedDoctorId = localStorage.getItem("doctorId");
+        if (!storedDoctorId) {
+            setError('Doctor ID not found.');
+            return;
+        }
+
+        const fetchUrl = `http://localhost:8080/slots/fetch?doctorId=${storedDoctorId}`;
         
         fetch(fetchUrl)
-        .then(response => response.json())
-        .then(data => setSlots(data))
-        .catch(err => {
-            console.error('Error:', err);
-            setError('Failed to fetch slots.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    setSlots(data);
+                } else {
+                    throw new Error('Unexpected response format');
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                setError('Failed to fetch slots.');
+            });
     };
 
     const formatTime = (dateTime) => {
@@ -44,17 +86,9 @@ const SlotManager = () => {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', backgroundColor: '#f7f7f7', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+            <DoctorNavbar />
             <h1>Slot Manager</h1>
             <div style={{ marginBottom: '20px' }}>
-                <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', color: 'black' }}>
-                    Doctor ID:
-                    <input
-                        type="number"
-                        value={doctorId}
-                        onChange={(e) => setDoctorId(e.target.value)}
-                        style={{ width: '100%', padding: '8px', marginTop: '5px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '5px' }}
-                    />
-                </label>
                 <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', color: 'black' }}>
                     Start Time (YYYY-MM-DDTHH:MM:SS):
                     <input

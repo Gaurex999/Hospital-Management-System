@@ -20,7 +20,10 @@ export default function Doctor() {
             })
             .then(data => {
                 setDoctorInfo(data);
+                // Store doctorId in local storage
+                localStorage.setItem('doctorId', data.doctorId);
             })
+
             .catch(error => {
                 console.error('Error:', error);
                 setError('Failed to load doctor data.');
@@ -47,6 +50,7 @@ export default function Doctor() {
                     <p><strong>Email ID:</strong> {doctorInfo.emailId}</p>
                     <p><strong>Aadhar No:</strong> {doctorInfo.aadharNo}</p>
                     <p><strong>Department ID:</strong> {doctorInfo.departmentId}</p>
+                    <p><strong>Doctor ID</strong> {doctorInfo.doctorId}</p>
                 </div>
             )}
         </div>

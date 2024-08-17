@@ -44,6 +44,9 @@ const DoctorNavbar = () => {
                 <a className="nav-link" href="/SlotManager">Time Slot</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/medicalrecord">Medical Records</a>
+              </li>
+              <li className="nav-item">
                 <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
               </li>
             </ul>
