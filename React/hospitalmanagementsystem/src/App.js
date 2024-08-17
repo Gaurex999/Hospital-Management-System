@@ -14,6 +14,11 @@ import UpdatePatientProfile from './Components/UpdatePatientProfile';
 
 
 import SlotManager from './Components/SlotManager';
+import MedicalRecordsComp from './Components/MedicalRecordsComp';
+import DoctorRegistration from './Components/RegisterDoctor';
+import InsertDoctor from './Components/RegisterDoctor';
+import BookAppointments from './Components/BookAppointments';
+
 
 
 
@@ -22,6 +27,8 @@ import SlotManager from './Components/SlotManager';
 function App() {
   return (
    
+  
+
     <div className="App">
      <header className="App-header">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -43,7 +50,7 @@ function App() {
           </div>
         </nav>
     
-
+   
 
 
 
@@ -54,6 +61,19 @@ function App() {
         <Route path="/patient_home" element={<PatientHome />} />
         <Route path='/Register' element={<SavePatientForm/>}/>
         <Route path='/view-appointments' element={<ViewAppointment />} />
+
+
+        
+
+        <Route path='/SlotManager' element={<SlotManager/>}/>
+
+
+        <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
+
+        <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>
+        <Route path='/RegisterDoctor' element={<InsertDoctor/>}/>
+        <Route path='/bookappointment' element={<BookAppointments/>}/>
+
       </Routes>
     </header>
   </div>

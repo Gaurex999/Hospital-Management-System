@@ -14,6 +14,9 @@ function UpdatePatientProfile() {
     });
 
     useEffect(() => {
+
+        const patient = localStorage.getItem("loggeduser")
+        console.log(patient);
         if (patientId) {
             // Fetch the existing patient data by patient ID
             const fetchPatientData = () => {

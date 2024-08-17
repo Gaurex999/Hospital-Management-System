@@ -1,5 +1,6 @@
 package com.example.demo.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.ManyToAny;
@@ -30,7 +31,7 @@ public class Slot {
 	    private Integer doctorId;
 
 	    @Column(name = "slot_date")
-	    private LocalDateTime slotDate; // Updated field for the date of the slot
+	    private LocalDate slotDate; // Updated field for the date of the slot
 
 	    @Column(name = "start_time")
 	    private LocalDateTime startTime;
@@ -41,7 +42,7 @@ public class Slot {
 	    // Optionally, you can add constructors, if needed
 	    public Slot() {}
 
-	    public Slot(Integer doctorId, LocalDateTime slotDate, LocalDateTime startTime, LocalDateTime endTime) {
+	    public Slot(Integer doctorId, LocalDate slotDate, LocalDateTime startTime, LocalDateTime endTime) {
 	        this.doctorId = doctorId;
 	        this.slotDate = slotDate; // Include the slot date
 	        this.startTime = startTime;
