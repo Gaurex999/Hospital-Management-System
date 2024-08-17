@@ -38,6 +38,9 @@ const PatientNavbar = () => {
                 <a className="nav-link" href="/scheduled-appointments">Check Scheduled Appointments</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/updatepatient">update Profile</a>
+              </li>
+              <li className="nav-item">
                 <button className="btn btn-link nav-link" onClick={handleLogout}>Logout</button>
               </li>
             </ul>

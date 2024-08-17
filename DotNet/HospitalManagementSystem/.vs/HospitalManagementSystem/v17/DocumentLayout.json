@@ -7,7 +7,15 @@
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\hospitalsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\admin\\desktop\\hospital-management-system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+=======
+      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+>>>>>>> f532437cccce5ea0b7482c88c27c5ee79d35236c
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,11 +23,15 @@
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\controllers\\patientlogincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\admin\\desktop\\hospital-management-system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\users\\admin\\desktop\\hospital-management-system\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\hospitalmanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+=======
+      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\hospitalmanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+>>>>>>> f532437cccce5ea0b7482c88c27c5ee79d35236c
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\hospitalmanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
@@ -90,7 +102,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PatientLoginController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Hospital-Management-System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
@@ -102,15 +114,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "DoctorController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Hospital-Management-System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Controllers\\DoctorController.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Hospital-Management-System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\DoctorController.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Controllers\\DoctorController.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAmwHYAAAAAAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwHYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-06T09:42:29.089Z"
+              "WhenOpened": "2024-08-06T09:42:29.089Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -174,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Doctor.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Hospital-Management-System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Doctor.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Doctor.cs",
@@ -192,7 +205,11 @@
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\Hospital-Management-System\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
+<<<<<<< HEAD
               "ViewState": "AQIAABoAAAAAAAAAAAA9wCgAAABWAAAA",
+=======
+              "ViewState": "AQIAAFsAAAAAAAAAAAAqwBYAAAA2AAAA",
+>>>>>>> f532437cccce5ea0b7482c88c27c5ee79d35236c
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T06:31:19.929Z",
               "EditorCaption": ""

@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 
 public class DoctorEntity {
-
+	
 	   @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "doctor_id")

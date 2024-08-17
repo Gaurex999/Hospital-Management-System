@@ -1,4 +1,5 @@
 package com.example.demo.services;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,26 +13,30 @@ import com.example.demo.repositories.SlotRepository;
 
 @Service	
 public class SlotService {
-
-	 @Autowired
+	  @Autowired
 	    private SlotRepository slotRepository;
 
-	    public void generateSlots(int doctorId, LocalDateTime start, LocalDateTime end, LocalDateTime date) {
+	  public void generateSlots(int doctorId, LocalDateTime start, LocalDateTime end, LocalDate date) {
 	        List<Slot> slots = new ArrayList<>();
 
-	        while (start.isBefore(end)) {
-	            Slot slot =  new Slot();
-	            slot.setDoctorId(doctorId);
-	            slot.setSlotDate(date); // Set the slot date
-	            slot.setStartTime(start);
-	            slot.setEndTime(start.plusMinutes(30)); // Assuming each slot is 30 minutes
-	            slots.add(slot);
+	        LocalDateTime currentStart = start;
+	        while (currentStart.isBefore(end)) {
+	            LocalDateTime currentEnd = currentStart.plusMinutes(30); // Assuming 30-minute slots
+	            if (currentEnd.isAfter(end)) break;
 
-	            start = start.plusMinutes(30);
+	            Slot slot = new Slot();
+	            slot.setDoctorId(doctorId);
+	            slot.setSlotDate(date);
+	            slot.setStartTime(currentStart);
+	            slot.setEndTime(currentEnd);
+
+	            slots.add(slot);
+	            currentStart = currentEnd;
 	        }
 
-	        slotRepository.saveAll(slots); // Save all slots at once
+	        slotRepository.saveAll(slots);
 	    }
+
 
 	    public List<Slot> fetchSlots(int doctorId) {
 	        return slotRepository.findByDoctorId(doctorId);
