@@ -67,17 +67,5 @@ public class UserController {
 	        return ResponseEntity.noContent().build();
 	    }
 	    
-	    @PutMapping("/change-password/{id}")
-	    public ResponseEntity<String> changePassword(@PathVariable int id, @RequestBody Map<String, String> passwords) {
-	        String oldPassword = passwords.get("oldPassword");
-	        String newPassword = passwords.get("newPassword");
-
-	        boolean success = userService.changePassword(id, oldPassword, newPassword);
-	        if (success) {
-	            return ResponseEntity.ok("Password changed successfully");
-	        } else {
-	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to change password");
-	        }
-	    }
 	
 }
