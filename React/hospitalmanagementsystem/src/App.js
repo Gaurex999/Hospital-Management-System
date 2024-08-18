@@ -19,6 +19,8 @@ import DoctorRegistration from './Components/RegisterDoctor';
 import InsertDoctor from './Components/RegisterDoctor';
 import BookAppointments from './Components/BookAppointments';
 import HomeNav from './Components/HomeNav';
+import PatientBookings from './Components/PatinetBookings';
+import ChangePasswordForm from './Components/ChangePassword';
 
 
 
@@ -52,6 +54,7 @@ function App() {
         
 
         <Route path='/SlotManager' element={<SlotManager/>}/>
+        <Route path='/change-password' element={<ChangePasswordForm/>}/>
 
         <Route path='/Booking' element={<BookAppointments/>}/>
         <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
@@ -59,7 +62,7 @@ function App() {
         <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>
         <Route path='/RegisterDoctor' element={<InsertDoctor/>}/>
         <Route path='/bookappointment' element={<BookAppointments/>}/>
-
+        <Route path='/ViewPatientAppointment' element={<PatientBookings/>}/>
       </Routes>
     </header>
   </div>

@@ -24,6 +24,10 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    public List<Booking> getBookingsByPatient(int patientId) {
+        return bookingRepository.findByPatientId(patientId);
+    }
+    
     public void deleteBooking(int id) {  // Changed Long to int
         bookingRepository.deleteById(id);
     }
