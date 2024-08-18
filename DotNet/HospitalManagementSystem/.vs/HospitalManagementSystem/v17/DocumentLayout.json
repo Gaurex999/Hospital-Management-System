@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\hospitalsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\hospitalsystemcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -41,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|solutionrelative:hospitalmanagementsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1A776416-9D4E-4C2B-8A19-05AAAAABD5A7}|HospitalManagementSystem\\HospitalManagementSystem.csproj|c:\\hmsp2\\dotnet\\hospitalmanagementsystem\\hospitalmanagementsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -90,19 +90,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PatientLoginController.cs",
-              "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
-              "RelativeDocumentMoniker": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
-              "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
-              "RelativeToolTip": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwCsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T19:31:43.708Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DoctorController.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Controllers\\DoctorController.cs",
@@ -114,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Program.cs",
@@ -126,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Patient.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Patient.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Patient.cs",
@@ -138,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Payment.cs",
@@ -150,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UidAndPwd.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\UidAndPwd.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\UidAndPwd.cs",
@@ -162,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\User.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\User.cs",
@@ -174,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Doctor.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Doctor.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Doctor.cs",
@@ -186,20 +174,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HospitalSystemContext.cs",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
-              "ViewState": "AQIAADEBAAAAAAAAAAAuwCgAAABgAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAIwC4AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T06:31:19.929Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Booking.cs",
+              "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Booking.cs",
+              "RelativeToolTip": "HospitalManagementSystem\\Models\\Booking.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-04T06:28:07.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "PatientLoginController.cs",
+              "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
+              "RelativeDocumentMoniker": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
+              "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
+              "RelativeToolTip": "HospitalManagementSystem\\Controllers\\PatientLoginController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwCsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T19:31:43.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "HospitalManagementSystem.csproj",
               "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\HospitalManagementSystem.csproj",
               "RelativeDocumentMoniker": "HospitalManagementSystem\\HospitalManagementSystem.csproj",
@@ -208,18 +221,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-08-12T14:23:07.786Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Booking.cs",
-              "DocumentMoniker": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Booking.cs",
-              "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\Booking.cs",
-              "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\Booking.cs",
-              "RelativeToolTip": "HospitalManagementSystem\\Models\\Booking.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAzwBkAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T06:28:07.844Z"
             },
             {
               "$type": "Document",

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { json } from "react-router-dom"
 import DoctorNavbar from "./DoctorNavBar";
 
 export default function Doctor() {
     const [doctorInfo, setDoctorInfo] = useState(null);
+
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -66,4 +68,7 @@ export default function Doctor() {
             )}
         </div>
     );
+
+    
 }
+

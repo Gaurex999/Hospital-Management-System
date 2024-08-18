@@ -45,18 +45,19 @@ export default function PatientHome() {
     };
 
     return (
-        <div className="container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100">
-            <PatientNavbar />
-            
-            <div className="text-center">
-                <h1 style={{ fontSize: '2.5rem' }}>
-                    Patient Home
-                </h1>
-                <h2 style={{ fontSize: '2rem' }}>
-                    Welcome, {patientName}
-                </h2>
-                
-            </div>
-        </div>
+        // <div>
+        //     <PatientNavbar />
+        //     <h1>Patient Home</h1>
+        // </div>
+
+        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
+    <PatientNavbar />
+    
+    <h1 style={{ fontSize: '2.5rem', marginBottom: '58.5rem' }}>
+      Patient Home
+    </h1>
+</div>
+
+
     );
 }
