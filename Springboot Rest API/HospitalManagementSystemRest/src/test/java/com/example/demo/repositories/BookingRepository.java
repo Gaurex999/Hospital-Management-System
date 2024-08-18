@@ -9,4 +9,5 @@ import com.example.demo.entities.Booking;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Integer> {  // Changed Long to Integer
     List<Booking> findByDoctorId(int doctorId);
+    List<Booking> findByPatientId(int patientId);
 }

@@ -96,5 +96,11 @@ public class BookingController {
 	    public List<Booking> getBookingsByDoctor(@PathVariable int doctorId) {
 	        return bookingRepository.findByDoctorId(doctorId);
 	    }
+	    
+	    @GetMapping("/patient/{patientId}")
+	    public ResponseEntity<List<Booking>> getBookingsByPatient(@PathVariable int patientId) {
+	        List<Booking> bookings = bookingRepository.findByPatientId(patientId);
+	        return new ResponseEntity<>(bookings, HttpStatus.OK);
+	    }
     
 }

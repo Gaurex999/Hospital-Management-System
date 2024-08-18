@@ -15,6 +15,8 @@ public class UserService {
 
 	  @Autowired
 	    private UserRepository userRepository;
+	  
+	
 
 	    public List<UserEntity> getAllUsers() {
 	        return userRepository.findAll();
@@ -46,5 +48,7 @@ public class UserService {
 	        userRepository.deleteById(userId);
 	    }
 	
+	  
+	    
 	
 }
