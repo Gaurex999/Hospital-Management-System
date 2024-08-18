@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DepartmentSelect from './DepartmentSelect';
 import DoctorSelect from './DoctorSelect';
 import SlotSelect from './SlotSelect';
+import patient1 from '../Components/Style/patient1.jpg'; 
 
 const BookAppointments = () => {
     const [selectedDepartment, setSelectedDepartment] = useState(null);
@@ -16,7 +17,8 @@ const BookAppointments = () => {
         padding: '20px',
         borderRadius: '8px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)', // Semi-transparent background
+        backdropFilter: 'blur(10px)', // Optional: adds a blur effect
     };
 
     const headingStyle = {
@@ -105,38 +107,51 @@ const BookAppointments = () => {
     };
 
     return (
-        <div style={containerStyle}>
-            <h1 style={headingStyle}>Book an Appointment</h1>
-            <DepartmentSelect 
-                onSelectDepartment={setSelectedDepartment} 
-                selectStyle={selectStyle} 
-            />
-            {selectedDepartment && (
-                <DoctorSelect 
-                    departmentId={selectedDepartment} 
-                    onSelectDoctor={setSelectedDoctor} 
+        <div style={{ 
+            minHeight: '100vh', // Ensure the div covers the full height of the viewport
+            width: '100vw', // Ensure the div covers the full width of the viewport
+            backgroundImage: `url(${patient1})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            backgroundRepeat: 'no-repeat',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
+            <div style={containerStyle}>
+                <h1 style={headingStyle}>Book an Appointment</h1>
+                <DepartmentSelect 
+                    onSelectDepartment={setSelectedDepartment} 
                     selectStyle={selectStyle} 
                 />
-            )}
-            {selectedDoctor && (
-                <SlotSelect 
-                    doctorId={selectedDoctor} 
-                    onSlotChange={setSelectedSlot} 
-                    selectStyle={selectStyle} 
-                    slots={slots} // Pass slots to SlotSelect
-                />
-            )}
-            {selectedSlot && (
-                <button 
-                    type="button" 
-                    style={buttonStyle} 
-                    onMouseOver={(e) => e.target.style.backgroundColor = buttonHoverStyle.backgroundColor}
-                    onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
-                    onClick={handleBooking}
-                >
-                    Confirm Appointment
-                </button>
-            )}
+                {selectedDepartment && (
+                    <DoctorSelect 
+                        departmentId={selectedDepartment} 
+                        onSelectDoctor={setSelectedDoctor} 
+                        selectStyle={selectStyle} 
+                    />
+                )}
+                {selectedDoctor && (
+                    <SlotSelect 
+                        doctorId={selectedDoctor} 
+                        onSlotChange={setSelectedSlot} 
+                        selectStyle={selectStyle} 
+                        slots={slots} // Pass slots to SlotSelect
+                    />
+                )}
+                {selectedSlot && (
+                    <button 
+                        type="button" 
+                        style={buttonStyle} 
+                        onMouseOver={(e) => e.target.style.backgroundColor = buttonHoverStyle.backgroundColor}
+                        onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+                        onClick={handleBooking}
+                    >
+                        Confirm Appointment
+                    </button>
+                )}
+            </div>
         </div>
     );
 };
