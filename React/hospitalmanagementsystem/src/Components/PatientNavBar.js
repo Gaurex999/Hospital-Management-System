@@ -32,7 +32,7 @@ const PatientNavbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link" href="/book-appointment">Book Appointment</a>
+                <a className="nav-link" href="/bookappointment">Book Appointment</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/scheduled-appointments">Check Scheduled Appointments</a>

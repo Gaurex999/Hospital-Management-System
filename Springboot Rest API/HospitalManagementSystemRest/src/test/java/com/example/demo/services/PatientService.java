@@ -1,10 +1,13 @@
 package com.example.demo.services;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.PatientEntity;
 import com.example.demo.repositories.PatientRepository;
@@ -31,6 +34,11 @@ public class PatientService {
         patientRepository.deleteById(patientId);
     }
     
+    public PatientEntity getPatientByUserId(Integer userId) {
+        return patientRepository.findByUserId(userId);
+    }
+    
+    
     public Optional<PatientEntity> updatePatientProfile(int patientId, PatientEntity patientDetails) {
         Optional<PatientEntity> patient = patientRepository.findById(patientId);
         
@@ -50,4 +58,6 @@ public class PatientService {
             return Optional.empty();
         }
     }
+    
+    
 }

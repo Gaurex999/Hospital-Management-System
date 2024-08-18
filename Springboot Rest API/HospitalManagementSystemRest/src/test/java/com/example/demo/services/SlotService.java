@@ -1,4 +1,5 @@
 package com.example.demo.services;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,36 +11,34 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.repositories.SlotRepository;
 
-
-@Service	
+@Service
 public class SlotService {
-	  @Autowired
-	    private SlotRepository slotRepository;
 
-	  public void generateSlots(int doctorId, LocalDateTime start, LocalDateTime end, LocalDate date) {
-	        List<Slot> slots = new ArrayList<>();
+    @Autowired
+    private SlotRepository slotRepository;
 
-	        LocalDateTime currentStart = start;
-	        while (currentStart.isBefore(end)) {
-	            LocalDateTime currentEnd = currentStart.plusMinutes(30); // Assuming 30-minute slots
-	            if (currentEnd.isAfter(end)) break;
+    public void generateSlots(Integer doctorId, LocalDateTime start, LocalDateTime end, LocalDate date) {
+        List<Slot> slots = new ArrayList<>();
 
-	            Slot slot = new Slot();
-	            slot.setDoctorId(doctorId);
-	            slot.setSlotDate(date);
-	            slot.setStartTime(currentStart);
-	            slot.setEndTime(currentEnd);
+        LocalDateTime currentStart = start;
+        while (currentStart.isBefore(end)) {
+            LocalDateTime currentEnd = currentStart.plusMinutes(30); // Assuming 30-minute slots
+            if (currentEnd.isAfter(end)) break;
 
-	            slots.add(slot);
-	            currentStart = currentEnd;
-	        }
+            Slot slot = new Slot();
+            slot.setDoctorId(doctorId);
+            slot.setSlotDate(date);
+            slot.setStartTime(currentStart);
+            slot.setEndTime(currentEnd);
 
-	        slotRepository.saveAll(slots);
-	    }
+            slots.add(slot);
+            currentStart = currentEnd;
+        }
 
+        slotRepository.saveAll(slots);
+    }
 
-	    public List<Slot> fetchSlots(int doctorId) {
-	        return slotRepository.findByDoctorId(doctorId);
-	    }
-	
+    public List<Slot> fetchSlots(Integer doctorId) {
+        return slotRepository.findByDoctorId(doctorId);
+    }
 }

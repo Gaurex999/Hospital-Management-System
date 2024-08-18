@@ -33,7 +33,7 @@ public class PatientController {
         } else {
             return new ResponseEntity<>("{\"error\":\"Patient not found\"}", HttpStatus.NOT_FOUND);
         }
-    }
+    }	
 
     @PostMapping
     public ResponseEntity<PatientEntity> createPatient(@RequestBody PatientEntity patient) {
@@ -67,7 +67,17 @@ public class PatientController {
         patientService.deletePatient(patientId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    
+    @GetMapping("/byUserId")
+    public ResponseEntity<PatientEntity> getPatientByUserId(@RequestParam("userId") Integer userId) {
+        PatientEntity patient = patientService.getPatientByUserId(userId);
+        if (patient != null) {
+            return new ResponseEntity<>(patient, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
     // API endpoint for updating patient profile
     @PutMapping("/profile/{id}")
     public ResponseEntity<PatientEntity> updatePatientProfile(@PathVariable("id") int patientId, @RequestBody PatientEntity patientDetails) {

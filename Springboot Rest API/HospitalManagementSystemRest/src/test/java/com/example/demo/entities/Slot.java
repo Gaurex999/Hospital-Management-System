@@ -22,10 +22,10 @@ import lombok.Data;
 @Table(name = "slot")
 public class Slot {
 
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "slot_id")
-	    private Integer slotId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "slot_id")
+	private Long slotId;
 
 	    @Column(name = "doctor_id")
 	    private Integer doctorId;
