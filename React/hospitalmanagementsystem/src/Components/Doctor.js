@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react";
-import { json } from "react-router-dom"
 import DoctorNavbar from "./DoctorNavBar";
 
 export default function Doctor() {
     const [doctorInfo, setDoctorInfo] = useState(null);
-
-    const [error, setError] = useState(null);
+    const [doctorName, setDoctorName] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-        if (loggedUser) {
-            const loginId = loggedUser.userId;
+        const loginId = loggedUser?.userId;
 
-            // Fetch patient information
-            fetch(`http://localhost:8080/api/patients/patient?id=${loginId}`)
-                .then(resp => resp.json())
-                .then(obj => {
-                    localStorage.setItem("loggedPatient", JSON.stringify(obj));
-                })
-                .catch(error => {
-                    console.error('Error fetching patient data:', error);
-                });
-
-            // Fetch doctor information
+        if (loginId) {
             fetch(`http://localhost:8080/api/doctors/byUserId?userId=${loginId}`)
                 .then(response => {
                     if (!response.ok) {
@@ -32,6 +20,7 @@ export default function Doctor() {
                 })
                 .then(data => {
                     setDoctorInfo(data);
+                    setDoctorName(data.firstName); // Assuming doctorName is the first name
                     // Store doctorId in local storage
                     localStorage.setItem('doctorId', data.doctorId);
                 })
@@ -39,16 +28,22 @@ export default function Doctor() {
                     console.error('Error:', error);
                     setError('Failed to load doctor data.');
                 });
+        } else {
+            setError('No logged-in user found.');
         }
     }, []);
 
     return (
-        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-            <DoctorNavbar />
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-                Doctor Home
+        <div style={{ height: '100vh', display: 'flex',alignItems: 'center', flexDirection: 'column' }}>
+            
+
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem', marginTop:'100px' }}>
+                Welcome, Dr. {doctorName}
             </h1>
-            {doctorInfo ? (
+
+            {error ? (
+                <p>{error}</p>
+            ) : doctorInfo ? (
                 <div className="doctor-info">
                     <h1>Welcome, Dr. {doctorInfo.firstName} {doctorInfo.lastName}</h1>
                     <p><strong>First Name:</strong> {doctorInfo.firstName}</p>
@@ -61,14 +56,9 @@ export default function Doctor() {
                     <p><strong>Department ID:</strong> {doctorInfo.departmentId}</p>
                     <p><strong>Doctor ID:</strong> {doctorInfo.doctorId}</p>
                 </div>
-            ) : error ? (
-                <p>{error}</p>
             ) : (
-                <p>Loading doctor data...</p>
+                <p>Loading doctor information...</p>
             )}
         </div>
     );
-
-    
 }
-

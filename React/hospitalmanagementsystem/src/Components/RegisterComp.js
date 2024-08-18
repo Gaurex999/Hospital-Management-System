@@ -1,114 +1,116 @@
-    import React, { useState } from 'react';
-    import "bootstrap/dist/css/bootstrap.min.css";
-    import "../Components/Style/register.css";
+import React, { useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../Components/Style/register.css";
+import hospital from '../Components/Style/Home1.jpg';
+import { Col, Row } from 'react-bootstrap';
 
-    export default function SavePatientForm() {
-        const [formData, setFormData] = useState({
-            patientName: '',
-            dateOfBirth: '',
-            bloodGroup: '',
-            patientAddress: '',
-            patientAadharNo: '',
-            patientEmailId: '',
-            patientContactNo: '',
-            user: {
-                roleId: 1,
-                userName: '',
-                password: '',
-                active: 1
-            }
-        });
+export default function SavePatientForm() {
+    const [formData, setFormData] = useState({
+        patientName: '',
+        dateOfBirth: '',
+        bloodGroup: '',
+        patientAddress: '',
+        patientAadharNo: '',
+        patientEmailId: '',
+        patientContactNo: '',
+        user: {
+            roleId: 1,
+            userName: '',
+            password: '',
+            active: 1
+        }
+    });
 
-        const [errors, setErrors] = useState({});
-        const [msg, setMsg] = useState('');
-        const [usernameAvailable, setUsernameAvailable] = useState(null);
+    const [errors, setErrors] = useState({});
+    const [msg, setMsg] = useState('');
+    const [usernameAvailable, setUsernameAvailable] = useState(null);
 
-        // Handle input change
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setFormData(prevState => {
-                const [field, subfield] = name.split('.');
-                if (subfield) {
-                    return {
-                        ...prevState,
-                        [field]: {
-                            ...prevState[field],
-                            [subfield]: value
-                        }
-                    };
-                }
+    // Handle input change
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => {
+            const [field, subfield] = name.split('.');
+            if (subfield) {
                 return {
                     ...prevState,
-                    [name]: value
+                    [field]: {
+                        ...prevState[field],
+                        [subfield]: value
+                    }
                 };
-            });
-
-            // Check username availability if the changed field is the username
-            if (name === 'user.userName') {
-                setMsg('');
-                setUsernameAvailable(null);
-
-                fetch(`http://localhost:8080/api/users/check-username?username=${value}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(text => {
-                                throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
-                            });
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data) {
-                            setUsernameAvailable(true);
-                            setMsg(' Username is already taken.');
-                        } else {
-                            setUsernameAvailable(false);
-                            setMsg('Username is available.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('There has been a problem with your fetch operation:', error);
-                        setMsg('Error checking username availability.');
-                    });
             }
-        };
+            return {
+                ...prevState,
+                [name]: value
+            };
+        });
 
-        const validateForm = () => {
-            const newErrors = {};
-        
-            // Regular expressions
-            const aadharRegex = /^\d{12}$/;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const contactRegex = /^\d{10}$/;
-            const passwordRegex = /^.{8,12}$/; // Password must be between 8 and 12 characters long
-        
-            // Validation logic
-            if (!formData.patientName.trim()) newErrors.patientName = 'Patient Name is required';
-            if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
-            if (!formData.bloodGroup) newErrors.bloodGroup = 'Blood Group is required';
-            if (!formData.patientAddress.trim()) newErrors.patientAddress = 'Patient Address is required';
-            if (!formData.patientAadharNo.trim() || !aadharRegex.test(formData.patientAadharNo)) newErrors.patientAadharNo = 'Aadhar Number must be a 12-digit number';
-            if (!formData.patientEmailId.trim() || !emailRegex.test(formData.patientEmailId)) newErrors.patientEmailId = 'Valid Email ID is required';
-            if (!formData.patientContactNo.trim() || !contactRegex.test(formData.patientContactNo)) newErrors.patientContactNo = 'Contact Number must be a 10-digit number';
-            if (!formData.user.userName.trim()) newErrors.userName = 'User Name is required';
-            if (!formData.user.password.trim() || !passwordRegex.test(formData.user.password)) newErrors.password = 'Password must be between 8 and 12 characters long';
-        
-            setErrors(newErrors);
-            return Object.keys(newErrors).length === 0;
-        };
-
-        // Handle form submission
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            if (!validateForm()) return;
-
+        // Check username availability if the changed field is the username
+        if (name === 'user.userName') {
             setMsg('');
+            setUsernameAvailable(null);
 
-            fetch("http://localhost:5042/api/PatientLogin/SavePatient/Insert", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
+            fetch(`http://localhost:8080/api/users/check-username?username=${value}`)
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data) {
+                        setUsernameAvailable(true);
+                        setMsg('Username is already taken.');
+                    } else {
+                        setUsernameAvailable(false);
+                        setMsg('Username is available.');
+                    }
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    setMsg('Error checking username availability.');
+                });
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        // Regular expressions
+        const aadharRegex = /^\d{12}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const contactRegex = /^\d{10}$/;
+        const passwordRegex = /^.{8,12}$/; // Password must be between 8 and 12 characters long
+
+        // Validation logic
+        if (!formData.patientName.trim()) newErrors.patientName = 'Patient Name is required';
+        if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required';
+        if (!formData.bloodGroup) newErrors.bloodGroup = 'Blood Group is required';
+        if (!formData.patientAddress.trim()) newErrors.patientAddress = 'Patient Address is required';
+        if (!formData.patientAadharNo.trim() || !aadharRegex.test(formData.patientAadharNo)) newErrors.patientAadharNo = 'Aadhar Number must be a 12-digit number';
+        if (!formData.patientEmailId.trim() || !emailRegex.test(formData.patientEmailId)) newErrors.patientEmailId = 'Valid Email ID is required';
+        if (!formData.patientContactNo.trim() || !contactRegex.test(formData.patientContactNo)) newErrors.patientContactNo = 'Contact Number must be a 10-digit number';
+        if (!formData.user.userName.trim()) newErrors.userName = 'User Name is required';
+        if (!formData.user.password.trim() || !passwordRegex.test(formData.user.password)) newErrors.password = 'Password must be between 8 and 12 characters long';
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!validateForm()) return;
+
+        setMsg('');
+
+        fetch("http://localhost:5042/api/PatientLogin/SavePatient/Insert", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
             .then(response => {
                 if (!response.ok) {
                     return response.text().then(text => {
@@ -125,25 +127,40 @@
                 console.error('There has been a problem with your fetch operation:', error);
                 setMsg('Failed to save patient data');
             });
-        };
+    };
 
-        // Handle Aadhar and Contact Number input to only accept numbers
-        const handleNumericInput = (e) => {
-            const { name, value } = e.target;
-            if (/^\d*$/.test(value)) {
-                setFormData(prevState => ({
-                    ...prevState,
-                    [name]: value
-                }));
-            }
-        };
+    // Handle Aadhar and Contact Number input to only accept numbers
+    const handleNumericInput = (e) => {
+        const { name, value } = e.target;
+        if (/^\d*$/.test(value)) {
+            setFormData(prevState => ({
+                ...prevState,
+                [name]: value
+            }));
+        }
+    };
 
-        return (
-            <div className="container">
-                <h2>Save Patient</h2>
-                <form onSubmit={handleSubmit}>
+    return (
+        
+        <div
+            className="container-fluid form-container d-flex justify-content-center align-items-center vh-100"
+            style={{
+                marginTop:'50px',
+                backgroundImage: `url(${hospital})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundAttachment: 'fixed',
+                backgroundRepeat: 'no-repeat',
+                height: '100vh'
+            }}
+        >
+            <div className="form-border" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px', width: '100%', maxWidth: '500px',marginTop:'50px' }}>
+                <h2 className="text-center" style={{ color: "black" }}>Save Patient</h2>
+                
+                <form onSubmit={handleSubmit} >
+                    <Row><Col md={6}>
                     <div className="mb-3">
-                        <label htmlFor="patientName" className="form-label" style={{color:'black'}}>Patient Name</label>
+                        <label htmlFor="patientName" className="form-label" style={{ color: 'black' }}>Patient Name</label>
                         <input
                             type="text"
                             className="form-control"
@@ -154,10 +171,12 @@
                             aria-describedby="patientNameHelp"
                             aria-invalid={!!errors.patientName}
                         />
-                        {errors.patientName && <div id="patientNameHelp" className="text-danger" style={{color:'black'}}>{errors.patientName}</div>}
+                        {errors.patientName && <div id="patientNameHelp" className="text-danger">{errors.patientName}</div>}
                     </div>
+                    </Col>
+                    <Col md={6}>
                     <div className="mb-3">
-                        <label htmlFor="dateOfBirth" className="form-label" style={{color:'black'}}>Date of Birth</label>
+                        <label htmlFor="dateOfBirth" className="form-label" style={{ color: 'black' }}>Date of Birth</label>
                         <input
                             type="date"
                             className="form-control"
@@ -170,8 +189,11 @@
                         />
                         {errors.dateOfBirth && <div id="dateOfBirthHelp" className="text-danger">{errors.dateOfBirth}</div>}
                     </div>
+                    </Col>
+                    </Row>
+                    <Row><Col md={6}>
                     <div className="mb-3">
-                        <label htmlFor="bloodGroup" className="form-label" style={{color:'black'}}>Blood Group</label>
+                        <label htmlFor="bloodGroup" className="form-label" style={{ color: 'black' }}>Blood Group</label>
                         <select
                             className="form-control"
                             id="bloodGroup"
@@ -193,8 +215,10 @@
                         </select>
                         {errors.bloodGroup && <div id="bloodGroupHelp" className="text-danger">{errors.bloodGroup}</div>}
                     </div>
+                    </Col>
+                    <Col md={6}>
                     <div className="mb-3">
-                        <label htmlFor="patientAddress" className="form-label" style={{color:'black'}}>Patient Address</label>
+                        <label htmlFor="patientAddress" className="form-label" style={{ color: 'black' }}>Patient Address</label>
                         <input
                             type="text"
                             className="form-control"
@@ -207,8 +231,11 @@
                         />
                         {errors.patientAddress && <div id="patientAddressHelp" className="text-danger">{errors.patientAddress}</div>}
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="patientAadharNo" className="form-label" style={{color:'black'}}>Aadhar Number</label>
+                    </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}><div className="mb-3">
+                        <label htmlFor="patientAadharNo" className="form-label" style={{ color: 'black' }}>Patient Aadhar No</label>
                         <input
                             type="text"
                             className="form-control"
@@ -220,9 +247,9 @@
                             aria-invalid={!!errors.patientAadharNo}
                         />
                         {errors.patientAadharNo && <div id="patientAadharNoHelp" className="text-danger">{errors.patientAadharNo}</div>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="patientEmailId" className="form-label" style={{color:'black'}}>Email ID</label>
+                    </div></Col>
+                        <Col md={6}><div className="mb-3">
+                        <label htmlFor="patientEmailId" className="form-label" style={{ color: 'black' }}>Patient Email ID</label>
                         <input
                             type="email"
                             className="form-control"
@@ -234,9 +261,12 @@
                             aria-invalid={!!errors.patientEmailId}
                         />
                         {errors.patientEmailId && <div id="patientEmailIdHelp" className="text-danger">{errors.patientEmailId}</div>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="patientContactNo" className="form-label" style={{color:'black'}}>Contact Number</label>
+                    </div></Col>
+                    </Row>
+                    
+                    <Row>
+                        <Col md={6}> <div className="mb-3">
+                        <label htmlFor="patientContactNo" className="form-label" style={{ color: 'black' }}>Patient Contact No</label>
                         <input
                             type="text"
                             className="form-control"
@@ -248,31 +278,29 @@
                             aria-invalid={!!errors.patientContactNo}
                         />
                         {errors.patientContactNo && <div id="patientContactNoHelp" className="text-danger">{errors.patientContactNo}</div>}
-                    </div>
-                    <div className="mb-3">
-                        <h4>User Details</h4>
-                        <div className="mb-3">
-                            <label htmlFor="user.userName" className="form-label" style={{color:'black'}}>User Name</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="user.userName"
-                                name="user.userName"
-                                value={formData.user.userName}
-                                onChange={handleChange}
-                                aria-describedby="userNameHelp"
-                                aria-invalid={!!errors.userName}
-                            />
-                            {errors.userName && <div id="userNameHelp" className="text-danger">{errors.userName}</div>}
-                        </div>
-                    
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="user.password" className="form-label" style={{color:'black'}}>Password</label>
+                    </div></Col>
+                        <Col md={6}><div className="mb-3">
+                        <label htmlFor="userName" className="form-label" style={{ color: 'black' }}>User Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="userName"
+                            name="user.userName"
+                            value={formData.user.userName}
+                            onChange={handleChange}
+                            aria-describedby="userNameHelp"
+                            aria-invalid={!!errors.userName}
+                        />
+                        {errors.userName && <div id="userNameHelp" className="text-danger">{errors.userName}</div>}
+                    </div></Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}><div className="mb-3">
+                        <label htmlFor="password" className="form-label" style={{ color: 'black' }}>Password</label>
                         <input
                             type="password"
                             className="form-control"
-                            id="user.password"
+                            id="password"
                             name="user.password"
                             value={formData.user.password}
                             onChange={handleChange}
@@ -280,10 +308,19 @@
                             aria-invalid={!!errors.password}
                         />
                         {errors.password && <div id="passwordHelp" className="text-danger">{errors.password}</div>}
+                    </div></Col>
+                        
+                    </Row>
+                   
+                    
+                    
+                    <div className="text-center">
+                        <button type="submit" className="btn btn-primary">Save Patient</button>
                     </div>
-                    <button type="submit" className="btn btn-primary">Save Patient</button>
+                    {msg && <div className="text-center mt-3">{msg}</div>}
                 </form>
-                {msg && <p className="mt-3">{msg}</p>}
             </div>
-        );
-    }
+        </div>
+  
+    );
+}
