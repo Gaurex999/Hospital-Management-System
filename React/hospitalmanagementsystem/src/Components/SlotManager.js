@@ -86,7 +86,7 @@ const SlotManager = () => {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', backgroundColor: '#f7f7f7', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
-            <DoctorNavbar />
+            <DoctorNavbar/>
             <h1>Slot Manager</h1>
             <div style={{ marginBottom: '20px' }}>
                 <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', color: 'black' }}>

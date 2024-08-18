@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest, loginSuccess, loginFailure } from '../Components/Slice';
 import '../Components/Style/NavBarLogin.css'
 import '../Components/Style/Logincss.css';
-import hospital from '../Components/Style/H3.jpg' 
+import hospital from '../Components/Style/Home1.jpg' 
+
+import HomeNav from "./HomeNav";
 
 export default function LoginComp() {
     const init = {
@@ -80,11 +82,13 @@ export default function LoginComp() {
             style={{
                 backgroundImage: `url(${hospital})`,
                 backgroundSize: 'cover', 
-                backgroundPosition: 'center', 
+                backgroundPosition: 'center',
+                backgroundAttachment:'fixed', 
                 backgroundRepeat: 'no-repeat', 
                 height: '100vh' 
             }}
         >
+            <HomeNav/>
             <div className="form-border" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '8px' }}>
                 <h2 className="text-center" style={{color:"black"}}>Login</h2>
                 <form onSubmit={sendData}>

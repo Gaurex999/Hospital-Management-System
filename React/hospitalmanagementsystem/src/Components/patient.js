@@ -20,7 +20,7 @@ export default function PatientHome() {
         // </div>
 
         <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
-    <PatientNavbar />
+    
     
     <h1 style={{ fontSize: '2.5rem', marginBottom: '58.5rem' }}>
       Patient Home
