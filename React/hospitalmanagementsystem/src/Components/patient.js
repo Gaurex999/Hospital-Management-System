@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../Components/Slice'; // Ensure you import the correct logout action
 import PatientNavbar from '../Components/PatientNavBar'; // Adjust the import path if necessary
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import patient1 from '../Components/Style/patient1.jpg'; // Import the image
 
 export default function PatientHome() {
     const [patientName, setPatientName] = useState('');
@@ -45,19 +46,24 @@ export default function PatientHome() {
     };
 
     return (
-        // <div>
-        //     <PatientNavbar />
-        //     <h1>Patient Home</h1>
-        // </div>
-
-        <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
-    
-    
-    <h1 style={{ fontSize: '2.5rem', marginBottom: '58.5rem' }}>
-      Patient Home
-    </h1>
-</div>
-
-
+        <div
+            className="container-fluid d-flex justify-content-center align-items-center vh-100"
+            style={{
+                backgroundImage: `url(${patient1})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundAttachment: 'fixed',
+                backgroundRepeat: 'no-repeat',
+                height: '100vh',
+                marginTop: '50px'
+            }}
+        >
+            <div style={{ textAlign: 'center' }}>
+                <h1 style={{ fontSize: '2.5rem' }}>
+                    Patient Home
+                </h1>
+                
+            </div>
+        </div>
     );
 }

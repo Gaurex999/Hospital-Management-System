@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import DoctorNavbar from "./DoctorNavBar";
+import doctorImage from '../Components/Style/doctor.jpg';
 
 export default function Doctor() {
     const [doctorInfo, setDoctorInfo] = useState(null);
-    const [doctorName, setDoctorName] = useState('');
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -20,7 +19,6 @@ export default function Doctor() {
                 })
                 .then(data => {
                     setDoctorInfo(data);
-                    setDoctorName(data.firstName); // Assuming doctorName is the first name
                     // Store doctorId in local storage
                     localStorage.setItem('doctorId', data.doctorId);
                 })
@@ -34,18 +32,30 @@ export default function Doctor() {
     }, []);
 
     return (
-        <div style={{ height: '100vh', display: 'flex',alignItems: 'center', flexDirection: 'column' }}>
-            
-
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem', marginTop:'100px' }}>
-                Welcome, Dr. {doctorName}
+        <div 
+            style={{
+                height: '100vh',
+                width: '100vw',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundImage: `url(${doctorImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+                color: 'white' // Ensure text is visible
+            }}
+        >
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>
+                {doctorInfo ? `Welcome, Dr. ${doctorInfo.firstName} ${doctorInfo.lastName}` : 'Loading...'}
             </h1>
 
             {error ? (
                 <p>{error}</p>
             ) : doctorInfo ? (
                 <div className="doctor-info">
-                    <h1>Welcome, Dr. {doctorInfo.firstName} {doctorInfo.lastName}</h1>
                     <p><strong>First Name:</strong> {doctorInfo.firstName}</p>
                     <p><strong>Last Name:</strong> {doctorInfo.lastName}</p>
                     <p><strong>Address:</strong> {doctorInfo.address}</p>
