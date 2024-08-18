@@ -1,7 +1,6 @@
-// DoctorSelect.js
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const DoctorSelect = ({ departmentId, onSelectDoctor }) => {
+const DoctorSelect = ({ departmentId, onSelectDoctor, selectStyle }) => {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
@@ -13,8 +12,12 @@ const DoctorSelect = ({ departmentId, onSelectDoctor }) => {
         }
     }, [departmentId]);
 
+    const handleChange = (event) => {
+        onSelectDoctor(event.target.value);
+    };
+
     return (
-        <select onChange={(e) => onSelectDoctor(e.target.value)}>
+        <select onChange={handleChange} style={selectStyle}>
             <option value="">Select Doctor</option>
             {doctors.map(doctor => (
                 <option key={doctor.doctorId} value={doctor.doctorId}>

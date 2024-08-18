@@ -45,6 +45,7 @@ export default function Doctor() {
                 <p>{error}</p>
             ) : doctorInfo ? (
                 <div className="doctor-info">
+                    <h1>Welcome, Dr. {doctorInfo.firstName} {doctorInfo.lastName}</h1>
                     <p><strong>First Name:</strong> {doctorInfo.firstName}</p>
                     <p><strong>Last Name:</strong> {doctorInfo.lastName}</p>
                     <p><strong>Address:</strong> {doctorInfo.address}</p>

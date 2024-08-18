@@ -53,7 +53,7 @@ function App() {
 
         <Route path='/SlotManager' element={<SlotManager/>}/>
 
-
+        <Route path='/Booking' element={<BookAppointments/>}/>
         <Route path='/medicalrecord' element={<MedicalRecordsComp/>}/>
 
         <Route path='/updatepatient' element={<UpdatePatientProfile/>}/>

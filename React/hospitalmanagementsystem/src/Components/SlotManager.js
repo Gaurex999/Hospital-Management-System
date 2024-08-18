@@ -26,33 +26,22 @@ const SlotManager = () => {
 
     const handleGenerateSlots = () => {
         if (!validateInput()) return;
-
-        const generateUrl = 'http://localhost:8080/slots/generate';
-        const requestBody = {
-            doctorId: parseInt(doctorId),
-            startTime: startTime,
-            endTime: endTime,
-            slotDate: slotDate
-        };
-
-        fetch(generateUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestBody)
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => { throw new Error(text); });
-            }
-            console.log('Slots generated successfully');
-            fetchSlots(); // Fetch slots after generating
-        })
-        .catch(err => {
-            console.error('Error during slot generation:', err);
-            setError(err.message || 'Failed to generate slots.');
-        });
+        const stid = localStorage.getItem("doctorId");
+        console.log(stid);
+        const generateUrl = `http://localhost:8080/slots/generate?doctorId=${stid}&startTime=${startTime}&endTime=${endTime}&slotDate=${slotDate}`;
+        
+        fetch(generateUrl, { method: 'POST' })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(text); });
+                }
+                console.log('Slots generated successfully');
+                fetchSlots(); // Fetch slots after generating
+            })
+            .catch(err => {
+                console.error('Error during slot generation:', err);
+                setError(err.message || 'Failed to generate slots.');
+            });
     };
 
     const fetchSlots = () => {
@@ -89,6 +78,8 @@ const SlotManager = () => {
             <DoctorNavbar/>
             <h1>Slot Manager</h1>
             <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', color: 'black' }}>
+                </label>
                 <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', color: 'black' }}>
                     Start Time (YYYY-MM-DDTHH:MM:SS):
                     <input

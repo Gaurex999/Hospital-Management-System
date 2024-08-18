@@ -1,7 +1,6 @@
-// DepartmentSelect.js
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const DepartmentSelect = ({ onSelectDepartment }) => {
+const DepartmentSelect = ({ onSelectDepartment, selectStyle }) => {
     const [departments, setDepartments] = useState([]);
 
     useEffect(() => {
@@ -11,12 +10,16 @@ const DepartmentSelect = ({ onSelectDepartment }) => {
             .catch(error => console.error('Error fetching departments:', error));
     }, []);
 
+    const handleChange = (event) => {
+        onSelectDepartment(event.target.value);
+    };
+
     return (
-        <select onChange={(e) => onSelectDepartment(e.target.value)}>
+        <select onChange={handleChange} style={selectStyle}>
             <option value="">Select Department</option>
-            {departments.map(dept => (
-                <option key={dept.departmentId} value={dept.departmentId}>
-                    {dept.departmentName}
+            {departments.map(department => (
+                <option key={department.departmentId} value={department.departmentId}>
+                    {department.departmentName}
                 </option>
             ))}
         </select>

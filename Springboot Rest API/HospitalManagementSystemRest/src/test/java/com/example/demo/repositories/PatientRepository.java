@@ -13,6 +13,6 @@ import com.example.demo.entities.PatientEntity;
 @Repository
 public interface PatientRepository extends JpaRepository<PatientEntity, Integer>{
 	
-
+	 PatientEntity findByUserId(Integer userId);
    
 }
