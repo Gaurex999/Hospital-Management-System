@@ -180,7 +180,7 @@
               "RelativeDocumentMoniker": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "ToolTip": "C:\\HMSP2\\DotNet\\HospitalManagementSystem\\HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
               "RelativeToolTip": "HospitalManagementSystem\\Models\\HospitalSystemContext.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAIwC4AAAAjAAAA",
+              "ViewState": "AQIAAIYAAAAAAAAAAAAuwC4AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T06:31:19.929Z",
               "EditorCaption": ""
@@ -195,8 +195,7 @@
               "RelativeToolTip": "HospitalManagementSystem\\Models\\Booking.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T06:28:07.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-04T06:28:07.844Z"
             },
             {
               "$type": "Document",
