@@ -33,7 +33,7 @@ public class PatientController {
         } else {
             return new ResponseEntity<>("{\"error\":\"Patient not found\"}", HttpStatus.NOT_FOUND);
         }
-    }
+    }	
 
     @PostMapping
     public ResponseEntity<PatientEntity> createPatient(@RequestBody PatientEntity patient) {
