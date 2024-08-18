@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.example.demo.entities.UserEntity;
 import com.example.demo.services.UserService;
@@ -63,6 +65,19 @@ public class UserController {
 	    public ResponseEntity<Void> deleteUser(@PathVariable int id) {
 	        userService.deleteUser(id);
 	        return ResponseEntity.noContent().build();
+	    }
+	    
+	    @PutMapping("/change-password/{id}")
+	    public ResponseEntity<String> changePassword(@PathVariable int id, @RequestBody Map<String, String> passwords) {
+	        String oldPassword = passwords.get("oldPassword");
+	        String newPassword = passwords.get("newPassword");
+
+	        boolean success = userService.changePassword(id, oldPassword, newPassword);
+	        if (success) {
+	            return ResponseEntity.ok("Password changed successfully");
+	        } else {
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to change password");
+	        }
 	    }
 	
 }

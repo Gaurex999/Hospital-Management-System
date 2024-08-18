@@ -44,7 +44,7 @@ const PatientNavbar = () => {
             </Nav>
           )}
 
-          {['/change-password', '/doctor_home', '/update-time-slot', '/manage-patients', '/view-appointments', '/update-profile'].includes(location.pathname) && (
+          {['/change-password', '/doctor_home', '/SlotManager', '/manage-patients', '/view-appointments', '/update-profile'].includes(location.pathname) && (
             <Nav className="ms-auto">
               <Nav.Item>
                 <Nav.Link as={Link} to="/manage-patients" className="text-dark fw-semibold">
@@ -62,7 +62,7 @@ const PatientNavbar = () => {
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link as={Link} to="/update-time-slot" className="text-dark fw-semibold">
+                <Nav.Link as={Link} to="/SlotManager" className="text-dark fw-semibold">
                   <i className="bi bi-clock-fill"></i> Time Slot
                 </Nav.Link>
               </Nav.Item>
@@ -79,21 +79,26 @@ const PatientNavbar = () => {
             </Nav>
           )}
 
-          {['/patient_home','/book-appointment','/updatepatient','/scheduled-appointments'].includes(location.pathname) && (
+          {['/patient_home', '/bookappointment', '/updatepatient', '/ViewPatientAppointment'].includes(location.pathname) && (
             <Nav className="ms-auto">
               <Nav.Item>
-                <Nav.Link as={Link} to="/book-appointment" className="text-dark fw-semibold">
+                <Nav.Link as={Link} to="/bookappointment" className="text-dark fw-semibold">
                   <i className="bi bi-calendar2-plus-fill"></i> Book Appointment
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link as={Link} to="/scheduled-appointments" className="text-dark fw-semibold">
+                <Nav.Link as={Link} to="/ViewPatientAppointment" className="text-dark fw-semibold">
                   <i className="bi bi-calendar-check-fill"></i> Check Scheduled Appointments
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link as={Link} to="/updatepatient" className="text-dark fw-semibold">
                   <i className="bi bi-person-circle"></i> Update Profile
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/change-password" className="text-dark fw-semibold">
+                  <i className="bi bi-key-fill"></i> Change Password
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
