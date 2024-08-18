@@ -79,10 +79,10 @@ const PatientNavbar = () => {
             </Nav>
           )}
 
-          {['/patient_home','/book-appointment','/updatepatient','/scheduled-appointments'].includes(location.pathname) && (
+          {['/patient_home','/Booking','/updatepatient','/scheduled-appointments'].includes(location.pathname) && (
             <Nav className="ms-auto">
               <Nav.Item>
-                <Nav.Link as={Link} to="/book-appointment" className="text-dark fw-semibold">
+                <Nav.Link as={Link} to="/Booking" className="text-dark fw-semibold">
                   <i className="bi bi-calendar2-plus-fill"></i> Book Appointment
                 </Nav.Link>
               </Nav.Item>
