@@ -14,31 +14,70 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 
+
 @Entity
 @Table(name = "booking")
 @Data
 public class Booking {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bookingId;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private int bookingId; // Changed to int
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private DoctorEntity doctor;
+	    private int doctorId; // Changed to int
+	    private int patientId; // Changed to int
+	    private int slotId; // Changed to int
+	    private String bookingStatus;
+	    private LocalDate bookingDate;
 
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private PatientEntity patient;
+	    // Getters and Setters
+	    public int getBookingId() {
+	        return bookingId;
+	    }
 
-    @Column(name = "booking_status")
-    private String bookingStatus;
+	    public void setBookingId(int bookingId) {
+	        this.bookingId = bookingId;
+	    }
 
-    @ManyToOne
-    @JoinColumn(name = "slot_id")
-    private Slot slot;
+	    public int getDoctorId() {
+	        return doctorId;
+	    }
 
-    @Column(name = "booking_date")
-    private LocalDate bookingDate;
+	    public void setDoctorId(int doctorId) {
+	        this.doctorId = doctorId;
+	    }
+
+	    public int getPatientId() {
+	        return patientId;
+	    }
+
+	    public void setPatientId(int patientId) {
+	        this.patientId = patientId;
+	    }
+
+	    public int getSlotId() {
+	        return slotId;
+	    }
+
+	    public void setSlotId(int slotId) {
+	        this.slotId = slotId;
+	    }
+
+	    public String getBookingStatus() {
+	        return bookingStatus;
+	    }
+
+	    public void setBookingStatus(String bookingStatus) {
+	        this.bookingStatus = bookingStatus;
+	    }
+
+	    public LocalDate getBookingDate() {
+	        return bookingDate;
+	    }
+
+	    public void setBookingDate(LocalDate bookingDate) {
+	        this.bookingDate = bookingDate;
+	    }
+	}
 	
-}
+

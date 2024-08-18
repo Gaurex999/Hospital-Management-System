@@ -1,5 +1,4 @@
-// BookAppointments.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DepartmentSelect from './DepartmentSelect';
 import DoctorSelect from './DoctorSelect';
 import SlotSelect from './SlotSelect';
@@ -7,6 +6,9 @@ import SlotSelect from './SlotSelect';
 const BookAppointments = () => {
     const [selectedDepartment, setSelectedDepartment] = useState(null);
     const [selectedDoctor, setSelectedDoctor] = useState(null);
+    const [selectedSlot, setSelectedSlot] = useState(null);
+    const [patientId, setPatientId] = useState(null);
+    const [slots, setSlots] = useState([]);
 
     const containerStyle = {
         maxWidth: '600px',
@@ -49,6 +51,59 @@ const BookAppointments = () => {
         backgroundColor: '#0056b3',
     };
 
+    // Retrieve patientId from local storage
+    useEffect(() => {
+        const loggedPatient = JSON.parse(localStorage.getItem('loggedPatient'));
+        if (loggedPatient && loggedPatient.patientId) {
+            setPatientId(loggedPatient.patientId);
+        }
+    }, []);
+
+    // Fetch slots when doctor changes
+    useEffect(() => {
+        if (selectedDoctor) {
+            fetch(`http://localhost:8080/api/bookings/slots/${selectedDoctor}`)
+                .then(response => response.json())
+                .then(data => setSlots(data))
+                .catch(error => console.error('Error fetching slots:', error));
+        }
+    }, [selectedDoctor]);
+
+    const handleBooking = () => {
+        if (!patientId || !selectedDoctor || !selectedSlot) {
+            alert('Please ensure all fields are selected.');
+            return;
+        }
+
+        const bookingData = {
+            doctorId: selectedDoctor,
+            patientId: patientId,
+            slotId: selectedSlot,
+            bookingStatus: 'Booked',
+            bookingDate: new Date().toISOString().split('T')[0], // Current date
+        };
+
+        console.log('Booking Data:', bookingData); // Log booking data
+
+        fetch('http://localhost:8080/api/bookings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookingData),
+        })
+        .then(response => response.json())
+        .then(() => {
+            alert('Booking successful!');
+            // Refetch slots to update availability
+            fetch(`http://localhost:8080/api/bookings/slots/${selectedDoctor}`)
+                .then(response => response.json())
+                .then(data => setSlots(data))
+                .catch(error => console.error('Error fetching slots:', error));
+        })
+        .catch(error => console.error('Error booking slot:', error));
+    };
+
     return (
         <div style={containerStyle}>
             <h1 style={headingStyle}>Book an Appointment</h1>
@@ -66,15 +121,18 @@ const BookAppointments = () => {
             {selectedDoctor && (
                 <SlotSelect 
                     doctorId={selectedDoctor} 
+                    onSlotChange={setSelectedSlot} 
                     selectStyle={selectStyle} 
+                    slots={slots} // Pass slots to SlotSelect
                 />
             )}
-            {selectedDoctor && (
+            {selectedSlot && (
                 <button 
                     type="button" 
                     style={buttonStyle} 
                     onMouseOver={(e) => e.target.style.backgroundColor = buttonHoverStyle.backgroundColor}
                     onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+                    onClick={handleBooking}
                 >
                     Confirm Appointment
                 </button>
